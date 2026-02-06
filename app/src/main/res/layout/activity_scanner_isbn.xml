@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootScanner"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Área de foco (retângulo central) -->
+    <View
+        android:id="@+id/viewFocusOverlay"
+        android:layout_width="220dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:background="@drawable/focus_overlay_drawable"
+        android:alpha="0"
+        android:visibility="visible" />
+
+    <!-- Instrução -->
+    <TextView
+        android:id="@+id/tvInstruction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/instrucao_scanner"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:padding="12dp"
+        android:layout_gravity="top" />
+
+    <!-- Botão de fechar -->
+    <ImageButton
+        android:id="@+id/btnCloseScanner"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:layout_gravity="top|end"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_close_white"
+        android:contentDescription="@string/btn_fechar_scanner" />
+</FrameLayout>

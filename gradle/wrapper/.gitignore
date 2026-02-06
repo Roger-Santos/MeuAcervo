@@ -1,0 +1,13 @@
+# Gradle
+.gradle/
+build/
+
+# Android Studio
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Cache
+.cxx/

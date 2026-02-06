@@ -1,0 +1,29 @@
+package com.rogersantos.meuacervo.data.dao
+
+import androidx.room.*
+import com.rogersantos.meuacervo.data.model.Emprestimo
+
+@Dao
+interface EmprestimoDao {
+
+    @Insert
+    suspend fun inserir(emprestimo: Emprestimo)
+
+    @Update
+    suspend fun atualizar(emprestimo: Emprestimo)
+
+    @Delete
+    suspend fun deletar(emprestimo: Emprestimo)
+
+    // Lista apenas os empréstimos ativos (não devolvidos)
+    @Query("SELECT * FROM emprestimos WHERE devolvido = 0 ORDER BY dataEmprestimo DESC")
+    suspend fun listarAtivos(): List<Emprestimo>
+
+    // Lista todos os empréstimos (ativos e devolvidos)
+    @Query("SELECT * FROM emprestimos ORDER BY dataEmprestimo DESC")
+    suspend fun listarTodos(): List<Emprestimo>
+
+    // Busca um empréstimo específico pelo ID
+    @Query("SELECT * FROM emprestimos WHERE id = :id LIMIT 1")
+    suspend fun buscarPorId(id: Int): Emprestimo?
+}

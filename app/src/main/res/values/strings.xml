@@ -1,0 +1,280 @@
+<resources>
+    <string name="app_name">Meu Acervo</string>
+
+    <string name="title_activity_cadastro_livro">Cadastrar Livro</string>
+    <string name="title_activity_cadastro_artigo">Cadastrar Artigo</string>
+    <string name="title_activity_meu_controle">Meu Controle</string>
+    <string name="title_activity_estante">Minha Estante</string>
+    <string name="title_activity_detalhes_livro">Detalhes do Livro</string>
+    <string name="title_activity_detalhes_artigo">Detalhes do Artigo</string>
+    <string name="title_activity_opcoes">Opções</string>
+    <string name="title_activity_scanner_isbn">Scanner ISBN</string>
+
+    <!-- Main -->
+    <string name="titulo_main">Meu Acervo</string>
+    <string name="btn_estante">Estante</string>
+    <string name="btn_controle">Empréstimos</string>
+
+    <!-- Cadastro Livro -->
+    <string name="titulo_cadastro_livro">Cadastrar Livro</string>
+    <string name="hint_isbn">Digite o ISBN</string>
+    <string name="hint_titulo_livro">Título do livro</string>
+    <string name="hint_categoria">Categoria</string>
+    <string name="hint_autores">Autores</string>
+    <string name="hint_editora">Editora</string>
+    <string name="hint_ano_publicacao">Ano de publicação</string>
+    <string name="hint_paginas">Número de páginas</string>
+    <string name="hint_descricao">Descrição</string>
+    <string name="hint_palavras_chave">Palavras-chave</string>
+    <string name="msg_livro_salvo">Livro salvo com sucesso!</string>
+
+    <!-- Cadastro Artigo -->
+    <string name="titulo_cadastro_artigo">Cadastrar Artigo</string>
+    <string name="hint_periodico">Periódico</string>
+    <string name="hint_issn">ISSN</string>
+    <string name="hint_titulo_artigo">Título do artigo</string>
+    <string name="hint_doi">DOI</string>
+    <string name="hint_link">Link de acesso</string>
+    <string name="hint_resumo">Resumo</string>
+    <string name="hint_palavras_chave_artigo">Palavras-chave</string>
+    <string name="hint_paginas_artigo">Número de páginas</string>
+    <string name="msg_artigo_salvo">Artigo salvo com sucesso!</string>
+    <string name="msg_artigo_atualizado">Artigo atualizado com sucesso!</string>
+    <string name="msg_doi_nao_encontrado">DOI não encontrado</string>
+    <string name="msg_issn_nao_encontrado">ISSN não encontrado</string>
+
+    <!-- Detalhes -->
+    <string name="aba_detalhes">Detalhes</string>
+    <string name="aba_editar">Editar</string>
+
+    <!-- Estante -->
+    <string name="titulo_estante">Minha Estante</string>
+    <string name="aba_livros">Livros</string>
+    <string name="aba_artigos">Artigos</string>
+    <string name="msg_vazio_livros">Nenhum livro encontrado</string>
+    <string name="msg_vazio_artigos">Nenhum artigo encontrado</string>
+
+    <!-- Controle -->
+    <string name="titulo_controle">Meu Controle</string>
+    <string name="aba_emprestimos">Livros</string>
+    <string name="aba_historico">Histórico</string>
+    <string name="msg_vazio_emprestimos">Nenhum empréstimo ativo.</string>
+    <string name="msg_vazio_historico">Nenhum empréstimo registrado.</string>
+    <string name="btn_devolver">Devolver</string>
+    <string name="dialog_novo_emprestimo">Novo Empréstimo</string>
+    <string name="msg_emprestimo_registrado">Empréstimo registrado!</string>
+    <string name="msg_livro_devolvido">Livro devolvido!</string>
+
+    <!-- Opções -->
+    <string name="titulo_opcoes">Organize e selecione as categorias</string>
+    <string name="btn_salvar_categorias">Salvar Categorias</string>
+    <string name="msg_categorias_salvas">Categorias salvas!</string>
+
+    <!-- Scanner -->
+    <string name="instrucao_scanner">Aponte o código de barras do livro para o retângulo</string>
+    <string name="btn_fechar_scanner">Fechar scanner</string>
+
+    <!-- Notificações -->
+    <string name="canal_lembrete_nome">Lembretes de Empréstimo</string>
+    <string name="canal_lembrete_desc">Notifica quando a devolução de um empréstimo está próxima</string>
+    <string name="msg_permissao_notificacao_concedida">Permissão de notificações concedida!</string>
+    <string name="msg_permissao_notificacao_negada">Permissão negada. Lembretes podem não aparecer.</string>
+
+    <!-- Labels -->
+    <string name="label_capa">Capa</string>
+    <string name="label_isbn">ISBN</string>
+    <string name="label_classificacao">Classificação</string>
+    <string name="label_categoria">Categoria</string>
+    <string name="label_autores">Autores</string>
+    <string name="label_editora">Editora</string>
+    <string name="label_ano">Ano</string>
+    <string name="label_paginas">Páginas</string>
+    <string name="label_descricao">Descrição</string>
+    <string name="label_palavras_chave">Palavras-chave</string>
+    <string name="label_data_aquisicao">Data de aquisição:</string>
+    <string name="label_ja_li_livro">Já li este livro</string>
+    <string name="label_ja_li_artigo">Já li este artigo</string>
+
+    <!-- Hints -->
+    <string name="hint_autores_livro">Nome(s) do(s) autor(es), separadas por vírgula</string>
+    <string name="hint_ano_livro">YYYY</string>
+    <string name="hint_paginas_livro">000</string>
+    <string name="hint_descricao_livro">Resumo, observações, comentários</string>
+    <string name="hint_palavras_chave_livro">Separar por vírgula</string>
+    <string name="hint_data_aquisicao">DD/MM/YYYY</string>
+    <string name="hint_periodico_conferencia">Periódico / Conferência</string>
+    <string name="hint_numero_paginas_artigo">Número de páginas</string>
+
+    <!-- Botões -->
+    <string name="btn_buscar">Buscar</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_salvar_livro">Salvar Livro</string>
+    <string name="btn_salvar_artigo">Salvar Artigo</string>
+    <string name="btn_salvar_alteracoes_livro">Salvar alterações</string>
+    <string name="btn_salvar_alteracoes_artigo">Salvar alterações</string>
+    <string name="btn_alterar_capa">Alterar capa</string>
+    <string name="btn_buscar_isbn">Buscar por ISBN</string>
+    <string name="btn_scan_barcode">Ler código de barras</string>
+    <string name="btn_capture_contracapa">Capturar contra capa</string>
+    <string name="fab_novo_emprestimo">Novo empréstimo</string>
+
+    <!-- Placeholders -->
+    <string name="placeholder_titulo_livro">Título do Livro</string>
+    <string name="placeholder_titulo_artigo">Título do Artigo</string>
+    <string name="placeholder_autores_artigo">Autores</string>
+    <string name="placeholder_periodico_artigo">Periódico</string>
+    <string name="placeholder_ano_artigo">Ano</string>
+    <string name="placeholder_nome_pessoa">Fulano da Silva</string>
+    <string name="placeholder_info_emprestimo">Tel: (11) 99999-9999 | Emp.: AAAA-MM-DD | Prev.: AAAA-MM-DD</string>
+    <string name="placeholder_sem_prazo">Sem prazo</string>
+    <string name="placeholder_qtd_emprestimos">X empréstimos realizados</string>
+
+    <!-- Status -->
+    <string name="status_em_aberto">Em aberto</string>
+    <string name="status_devolvido">Devolvido</string>
+    <string name="status_atrasado">Atrasado</string>
+
+    <!-- Outros -->
+    <string name="alarme_configurado">Alarme configurado</string>
+
+    <string name="label_periodico">Periódico</string>
+    <string name="hint_autores_artigo">Autores</string>
+    <string name="info_capa">Toque na imagem para trocar a capa. Você pode tirar foto, escolher da galeria ou colar uma URL.</string>
+    <string name="capa_livro_desc">Capa do livro</string>
+    <string name="info_isbn">Insira o ISBN para buscar metadados automaticamente. Você também pode usar o leitor de código de barras para preencher o campo.</string>
+    <string name="label_palavras_detectadas">Palavras detectadas</string>
+    <string name="info_contracapa">Tire uma foto da contra capa para tentar extrair mais informações do livro</string>
+    <string name="info_classificacao">Avalie este livro de 1 a 5 estrelas para registrar sua opinião pessoal.</string>
+    <string name="label_titulo_livro">Título</string>
+    <string name="fab_add_item">Adicionar item</string>
+    <string name="logo_app_desc">Logo do aplicativo</string>
+    <string name="hint_livro">Livro</string>
+    <string name="hint_nome_pessoa">Nome da pessoa</string>
+    <string name="hint_telefone">Telefone</string>
+    <string name="hint_data_prevista">Data prevista de devolução</string>
+    <string name="hint_configurar_alarme">Configurar alarme (data e hora)</string>
+    <string name="label_titulo_artigo">Título do Artigo</string>
+    <string name="label_autores_artigo">Autores</string>
+    <string name="label_periodico_artigo">Periódico</string>
+    <string name="label_ano_artigo">Ano</string>
+    <string name="label_doi_artigo">DOI</string>
+    <string name="label_link_artigo">Link</string>
+    <string name="label_paginas_artigo">Páginas</string>
+    <string name="label_resumo_artigo">Resumo do artigo</string>
+    <string name="label_palavras_chave_artigo">Palavras-chave</string>
+    <string name="label_categoria_livro">Categoria:</string>
+    <string name="valor_nao_informado">— Não informado —</string>
+    <string name="label_autores_livro">Autor(es):</string>
+    <string name="label_editora_livro">Editora:</string>
+    <string name="label_publicado_em">Publicado em:</string>
+    <string name="label_paginas_livro">Páginas:</string>
+    <string name="label_descricao_livro">Descrição:</string>
+    <string name="label_palavras_chave_livro">Palavras-chave:</string>
+    <string name="label_avaliacao_livro">Avaliação:</string>
+    <string name="label_data_aquisicao_nao_informado">Data de aquisição: — Não informado —</string>
+    <string name="label_ja_foi_lido">Já foi lido:</string>
+    <string name="hint_ano_publicacao_artigo">Ano de publicação</string>
+    <string name="hint_doi_artigo">DOI</string>
+    <string name="hint_link_artigo">Link de acesso</string>
+    <string name="hint_resumo_artigo">Resumo</string>
+    <string name="btn_salvar_alteracoes">Salvar alterações</string>
+    <string name="hint_categoria_livro">Categoria</string>
+    <string name="hint_editora_livro">Editora</string>
+    <string name="hint_ano_publicacao_livro">Ano de publicação</string>
+    <string name="hint_numero_paginas_livro">Número de páginas</string>
+    <string name="status_lido_animado">Status de lido animado</string>
+    <string name="hint_buscar">Buscar</string>
+    <string name="placeholder_emprestado_para">Emprestado para Fulano</string>
+    <string name="placeholder_telefone">Telefone: -</string>
+    <string name="label_telefone">Telefone</string>
+    <string name="placeholder_data_emprestimo">Emprestado em: 2025-11-16</string>
+    <string name="placeholder_data_prevista">Previsto para: 2025-11-20</string>
+    <string name="placeholder_data_devolucao">Devolvido em: 2025-11-18</string>
+    <string name="label_status">Status</string>
+    <string name="placeholder_autores_livro">Autor(es)</string>
+    <string name="placeholder_categoria_livro">Categoria</string>
+    <string name="placeholder_paginas_livro">Páginas</string>
+    <string name="icon_lido_desc">Ícone de status de leitura</string>
+    <string name="msg_erro_resposta">Erro %1$d - %2$s</string>
+    <string name="msg_excecao">Exceção: %1$s</string>
+    <string name="title_cadastrar_artigo">Cadastrar Artigo</string>
+    <string name="msg_digite_doi_valido">Digite um DOI válido</string>
+    <string name="msg_digite_issn_valido">Digite um ISSN válido</string>
+    <string name="msg_artigo_salvo_sucesso">Artigo salvo com sucesso!</string>
+    <string name="msg_artigo_encontrado_crossref">Artigo encontrado no CrossRef</string>
+    <string name="title_cadastrar_livro">Cadastrar Livro</string>
+    <string name="msg_digite_isbn">Digite o ISBN</string>
+    <string name="msg_titulo_obrigatorio">Título obrigatório</string>
+    <string name="dialog_escolha_opcao">Escolha uma opção</string>
+    <string name="opcao_tirar_foto">Tirar Foto</string>
+    <string name="opcao_selecionar_galeria">Selecionar da Galeria</string>
+    <string name="dialog_alterar_capa">Alterar capa</string>
+    <string name="opcao_inserir_url">Inserir URL</string>
+    <string name="dialog_inserir_url_capa">Inserir URL da capa</string>
+    <string name="hint_url_capa">https://exemplo.com/capa.jpg</string>
+    <string name="btn_ok">OK</string>
+    <string name="msg_erro_salvar_livro">Erro ao salvar</string>
+    <string name="msg_erro_reconhecer_texto">Erro ao reconhecer texto</string>
+    <string name="tab_detalhes">Detalhes</string>
+    <string name="tab_editar">Editar</string>
+    <string name="placeholder_autores_nao_informados">Autores não informados</string>
+    <string name="placeholder_periodico_nao_informado">Periódico não informado</string>
+    <string name="placeholder_ano_nao_informado">Ano não informado</string>
+    <string name="placeholder_doi_nao_disponivel">DOI não disponível</string>
+    <string name="placeholder_link_nao_disponivel">Link não disponível</string>
+    <string name="placeholder_resumo_nao_disponivel">Resumo não disponível</string>
+    <string name="placeholder_palavras_chave_nao_informadas">Palavras-chave não informadas</string>
+    <string name="placeholder_paginas_nao_informadas">Número de páginas não informado</string>
+    <string name="label_data_publicacao">Publicado em: </string>
+    <string name="placeholder_nao_informado">— Não informado —</string>
+    <string name="msg_artigo_atualizado_sucesso">Artigo atualizado com sucesso!</string>
+    <string name="msg_livro_atualizado_sucesso">Livro atualizado com sucesso!</string>
+    <string name="label_emprestado_para">Emprestado para: %1$s</string>
+    <string name="label_telefone_nao_informado">Telefone: -</string>
+    <string name="label_devolucao_prevista">Devolução prevista: %1$s</string>
+    <string name="label_sem_prazo">Sem prazo</string>
+    <string name="btn_salvar">Salvar</string>
+    <string name="msg_preencha_campos">Preencha os campos corretamente</string>
+    <string name="msg_lembrete_agendado">Lembrete agendado para %1$s</string>
+    <string name="msg_erro_agendar_lembrete">Erro ao agendar lembrete: %1$s</string>
+    <string name="msg_categoria_salvas">Categoria salva</string>
+    <string name="title_minha_estante">Minha Estante</string>
+    <string name="tab_livros">Livros</string>
+    <string name="tab_artigos">Artigos</string>
+    <string name="btn_adicionar_livro">Adicionar livro</string>
+    <string name="btn_adicionar_artigo">Adicionar artigo</string>
+    <string name="placeholder_livro">Livro</string>
+    <string name="placeholder_contato">Contato</string>
+    <string name="notification_devolucao_proxima">Devolução próxima</string>
+    <string name="notification_text_devolucao">O livro \'%1$s\' emprestado para %2$s está próximo da devolução.</string>
+    <string name="label_paginas_format">%1$d págs.</string>
+    <string name="log_resposta_nula">Resposta nula</string>
+    <string name="log_resposta_completa">Resposta completa: %1$s</string>
+    <string name="channel_lembrete_nome">Lembretes de Empréstimo</string>
+    <string name="channel_lembrete_descricao">Notifica quando a devolução de um empréstimo está próxima</string>
+    <string name="msg_permissao_concedida">Permissão de notificações concedida!</string>
+    <string name="msg_permissao_negada">Permissão negada. Lembretes podem não aparecer.</string>
+    <string name="title_meu_controle">Meu Controle</string>
+    <string name="tab_historico">Histórico</string>
+    <string name="categoria_titulo">Título</string>
+    <string name="categoria_subtitulo">Subtítulo</string>
+    <string name="categoria_autor">Autor</string>
+    <string name="categoria_local">Local</string>
+    <string name="categoria_ano">Ano</string>
+    <string name="categoria_editora">Editora</string>
+    <string name="msg_resposta_sem_corpo">Resposta sem corpo (%1$s)</string>
+    <string name="msg_excecao_api">Exceção em %1$s: %2$s</string>
+    <string name="msg_permissao_camera_necessaria">Permissão de câmera necessária</string>
+    <string name="msg_falha_scanner">Falha no scanner: %1$s</string>
+    <string name="msg_erro_iniciar_camera">Erro ao iniciar câmera</string>
+    <string name="msg_isbn_detectado">ISBN: %1$s</string>
+    <string name="msg_livro_desconhecido">Livro desconhecido</string>
+    <string name="historico_emprestado_em">Emprestado em: %1$s</string>
+    <string name="historico_previsao">Previsão: %1$s</string>
+    <string name="historico_sem_prazo">Sem prazo</string>
+    <string name="historico_devolvido_em">Devolvido em: %1$s</string>
+    <string name="historico_ainda_nao_devolvido">Ainda não devolvido</string>
+    <string name="historico_devolvido">Devolvido</string>
+    <string name="historico_ativo">Ativo</string>
+    <string name="historico_emprestimos_realizados">%1$s empréstimos realizados</string>
+</resources>

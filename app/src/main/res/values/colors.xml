@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="accentColor">#607D8B</color>
+    <color name="primaryText">#212121</color>
+    <color name="secondaryText">#757575</color>
+    <color name="wordsAreaBackground">#EFEFEF</color>
+
+    <color name="darker_gray">#A9A9A9</color>
+
+
+
+
+
+    <!-- Primária: azul confiável e moderno -->
+    <color name="primaryColor">#1976D2</color>         <!-- Azul médio -->
+    <color name="darkPrimaryColor">#1565C0</color>     <!-- Azul escuro -->
+    <color name="lightPrimaryColor">#BBDEFB</color>    <!-- Azul claro -->
+
+    <!-- Secundária: verde suave para contraste -->
+    <color name="secondaryColor">#43A047</color>       <!-- Verde médio -->
+    <color name="darkSecondaryColor">#388E3C</color>   <!-- Verde escuro -->
+    <color name="lightSecondaryColor">#C8E6C9</color>  <!-- Verde claro -->
+
+    <!-- Fundo e divisores -->
+    <color name="backgroundColor">#F5F5F5</color>      <!-- Cinza claro -->
+    <color name="surfaceColor">#FFFFFF</color>         <!-- Branco puro -->
+    <color name="divideColor">#E0E0E0</color>          <!-- Cinza divisório -->
+
+    <!-- Texto -->
+    <color name="textPrimary">#212121</color>          <!-- Preto suave -->
+    <color name="textSecondary">#757575</color>        <!-- Cinza escuro -->
+    <color name="textDisabled">#BDBDBD</color>         <!-- Cinza claro -->
+
+    <!-- Ícones e estados -->
+    <color name="iconColor">#616161</color>            <!-- Cinza médio -->
+    <color name="disabledIcon">#9E9E9E</color>         <!-- Ícone desabilitado -->
+
+    <!-- Erros e alertas -->
+    <color name="errorColor">#D32F2F</color>           <!-- Vermelho alerta -->
+    <color name="warningColor">#FFA000</color>         <!-- Laranja alerta -->
+    <color name="successColor">#388E3C</color>         <!-- Verde sucesso -->
+
+    <!-- Ação flutuante -->
+    <color name="fabColor">#FF4081</color>             <!-- Rosa vibrante -->
+
+    <color name="amber">#FFC107</color>
+    <color name="darkGray">#616161</color>
+
+</resources>

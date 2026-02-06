@@ -1,0 +1,46 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Tema principal do app -->
+    <style name="Theme.MeuAcervo" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <!-- Cores principais -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryVariant">@color/darkPrimaryColor</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+
+        <!-- Cores secundárias -->
+        <item name="colorSecondary">@color/secondaryColor</item>
+        <item name="colorSecondaryVariant">@color/darkSecondaryColor</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+
+        <!-- Fundo e superfícies -->
+        <item name="android:colorBackground">@color/backgroundColor</item>
+        <item name="colorSurface">@color/surfaceColor</item>
+        <item name="colorOnSurface">@color/textPrimary</item>
+
+        <!-- Texto -->
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+
+        <!-- Botões e ícones -->
+        <item name="colorError">@color/errorColor</item>
+        <item name="colorOnError">@android:color/white</item>
+        <item name="colorControlNormal">@color/iconColor</item>
+        <item name="colorControlActivated">@color/primaryColor</item>
+
+        <!-- FloatingActionButton -->
+        <item name="floatingActionButtonStyle">@style/Widget.MaterialComponents.FloatingActionButton</item>
+
+        <!-- Estilo de botão padrão -->
+        <item name="materialButtonStyle">@style/Widget.MaterialComponents.Button</item>
+
+        <!-- Estilo de CardView Material -->
+        <item name="materialCardViewStyle">@style/Widget.MaterialComponents.CardView</item>
+
+        <!-- Estilo de TextInputLayout -->
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+
+        <!-- Fonte padrão -->
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+</resources>

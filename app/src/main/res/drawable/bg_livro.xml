@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Cor de fundo do livro -->
+    <solid android:color="#F5F5DC" /> <!-- Bege claro, tipo papel antigo -->
+
+    <!-- Bordas arredondadas -->
+    <corners android:radius="8dp" />
+
+    <!-- Borda fina ao redor -->
+    <stroke
+        android:width="1dp"
+        android:color="#A9A9A9" /> <!-- Cinza suave -->
+
+    <!-- Sombra leve (simulada com padding e cor) -->
+    <padding
+        android:left="4dp"
+        android:top="4dp"
+        android:right="4dp"
+        android:bottom="4dp" />
+</shape>

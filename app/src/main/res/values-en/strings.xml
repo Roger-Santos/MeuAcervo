@@ -1,0 +1,281 @@
+<resources>
+    <string name="app_name">Meu Acervo</string>
+
+    <string name="title_activity_cadastro_livro">Register Book</string>
+    <string name="title_activity_cadastro_artigo">Register Article</string>
+    <string name="title_activity_meu_controle">My Control</string>
+    <string name="title_activity_estante">My Library</string>
+    <string name="title_activity_detalhes_livro">Book Details</string>
+    <string name="title_activity_detalhes_artigo">Article Details</string>
+    <string name="title_activity_opcoes">Options</string>
+    <string name="title_activity_scanner_isbn">ISBN Scanner</string>
+
+    <!-- Main -->
+    <string name="titulo_main">My Collection</string>
+    <string name="btn_estante">Library</string>
+    <string name="btn_controle">Loans</string>
+
+    <!-- Book Registration -->
+    <string name="titulo_cadastro_livro">Register Book</string>
+    <string name="hint_isbn">Enter ISBN</string>
+    <string name="hint_titulo_livro">Book title</string>
+    <string name="hint_categoria">Category</string>
+    <string name="hint_autores">Authors</string>
+    <string name="hint_editora">Publisher</string>
+    <string name="hint_ano_publicacao">Publication year</string>
+    <string name="hint_paginas">Pages</string>
+    <string name="hint_descricao">Description</string>
+    <string name="hint_palavras_chave">Keywords</string>
+    <string name="hint_data_aquisicao">Acquisition date</string>
+    <string name="label_ja_li_livro">I have read this book</string>
+    <string name="btn_salvar_livro">Save</string>
+    <string name="msg_livro_salvo">Book saved successfully!</string>
+
+    <!-- Article Registration -->
+    <string name="titulo_cadastro_artigo">Register Article</string>
+    <string name="hint_periodico">Journal</string>
+    <string name="hint_issn">ISSN</string>
+    <string name="hint_titulo_artigo">Article title</string>
+    <string name="hint_doi">DOI</string>
+    <string name="hint_link">Access link</string>
+    <string name="hint_resumo">Abstract</string>
+    <string name="hint_palavras_chave_artigo">Keywords</string>
+    <string name="hint_paginas_artigo">Pages</string>
+    <string name="label_ja_li_artigo">I have read this article</string>
+    <string name="btn_salvar_artigo">Save</string>
+    <string name="msg_artigo_salvo">Article saved successfully!</string>
+    <string name="msg_artigo_atualizado">Article updated successfully!</string>
+    <string name="msg_doi_nao_encontrado">DOI not found</string>
+    <string name="msg_issn_nao_encontrado">ISSN not found</string>
+
+    <!-- Details -->
+    <string name="aba_detalhes">Details</string>
+    <string name="aba_editar">Edit</string>
+
+    <!-- Library -->
+    <string name="titulo_estante">My Library</string>
+    <string name="aba_livros">Books</string>
+    <string name="aba_artigos">Articles</string>
+    <string name="msg_vazio_livros">No books found</string>
+    <string name="msg_vazio_artigos">No articles found</string>
+
+    <!-- Control -->
+    <string name="titulo_controle">My Control</string>
+    <string name="aba_emprestimos">Loans</string>
+    <string name="aba_historico">History</string>
+    <string name="msg_vazio_emprestimos">No active loans.</string>
+    <string name="msg_vazio_historico">No loans registered.</string>
+    <string name="btn_devolver">Return</string>
+    <string name="dialog_novo_emprestimo">New Loan</string>
+    <string name="msg_emprestimo_registrado">Loan registered!</string>
+    <string name="msg_livro_devolvido">Book returned!</string>
+
+    <!-- Options -->
+    <string name="titulo_opcoes">Organize and select categories</string>
+    <string name="btn_salvar_categorias">Save Categories</string>
+    <string name="msg_categorias_salvas">Categories saved!</string>
+
+    <!-- Scanner -->
+    <string name="instrucao_scanner">Point the book barcode to the rectangle</string>
+    <string name="btn_fechar_scanner">Close scanner</string>
+
+    <!-- Notifications -->
+    <string name="canal_lembrete_nome">Loan Reminders</string>
+    <string name="canal_lembrete_desc">Notifies when a loan return is approaching</string>
+    <string name="msg_permissao_notificacao_concedida">Notification permission granted!</string>
+    <string name="msg_permissao_notificacao_negada">Permission denied. Reminders may not appear.</string>
+
+    <!-- Labels -->
+    <string name="label_capa">Cover</string>
+    <string name="label_isbn">ISBN</string>
+    <string name="label_classificacao">Rating</string>
+    <string name="label_categoria">Category</string>
+    <string name="label_autores">Authors</string>
+    <string name="label_editora">Publisher</string>
+    <string name="label_ano">Year</string>
+    <string name="label_paginas">Pages</string>
+    <string name="label_descricao">Description</string>
+    <string name="label_palavras_chave">Keywords</string>
+    <string name="label_data_aquisicao">Acquisition date</string>
+
+    <!-- Hints -->
+    <string name="hint_autores_livro">Author names separated by commas</string>
+    <string name="hint_ano_livro">YYYY</string>
+    <string name="hint_paginas_livro">000</string>
+    <string name="hint_descricao_livro">Summary, notes, comments</string>
+    <string name="hint_palavras_chave_livro">Separate by commas</string>
+    <string name="hint_periodico_conferencia">Journal / Conference</string>
+    <string name="hint_numero_paginas_artigo">Number of pages</string>
+
+    <!-- Buttons -->
+    <string name="btn_buscar">Search</string>
+    <string name="btn_cancelar">Cancel</string>
+    <string name="btn_salvar_alteracoes_livro">Save changes</string>
+    <string name="btn_salvar_alteracoes_artigo">Save changes</string>
+    <string name="btn_alterar_capa">Change cover</string>
+    <string name="btn_buscar_isbn">Search by ISBN</string>
+    <string name="btn_scan_barcode">Scan barcode</string>
+    <string name="btn_capture_contracapa">Capture back cover</string>
+    <string name="fab_novo_emprestimo">New loan</string>
+
+    <!-- Placeholders -->
+    <string name="placeholder_titulo_livro">Book Title</string>
+    <string name="placeholder_titulo_artigo">Article Title</string>
+    <string name="placeholder_autores_artigo">Authors</string>
+    <string name="placeholder_periodico_artigo">Journal</string>
+    <string name="placeholder_ano_artigo">Year</string>
+    <string name="placeholder_nome_pessoa">John Doe</string>
+    <string name="placeholder_info_emprestimo">Tel: (11) 99999-9999 | Loan: YYYY-MM-DD | Due: YYYY-MM-DD</string>
+    <string name="placeholder_sem_prazo">No due date</string>
+    <string name="placeholder_qtd_emprestimos">X loans made</string>
+
+    <!-- Status -->
+    <string name="status_em_aberto">Open</string>
+    <string name="status_devolvido">Returned</string>
+    <string name="status_atrasado">Overdue</string>
+
+    <!-- Others -->
+    <string name="alarme_configurado">Alarm set</string>
+
+    <string name="label_periodico">Journal</string>
+    <string name="hint_autores_artigo">Authors</string>
+    <string name="info_capa">Tap the image to change the cover. You can take a photo, choose from gallery, or paste a URL.</string>
+    <string name="capa_livro_desc">Book cover</string>
+    <string name="info_isbn">Enter the ISBN to automatically fetch metadata. You can also use the barcode scanner to fill the field.</string>
+    <string name="label_palavras_detectadas">Detected words</string>
+    <string name="info_contracapa">Take a photo of the back cover to try extracting more information about the book</string>
+    <string name="info_classificacao">Rate this book from 1 to 5 stars to record your personal opinion.</string>
+    <string name="label_titulo_livro">Title</string>
+    <string name="fab_add_item">Add item</string>
+    <string name="logo_app_desc">App logo</string>
+    <string name="hint_livro">Book</string>
+    <string name="hint_nome_pessoa">Persons name</string>
+    <string name="hint_telefone">Phone</string>
+    <string name="hint_data_prevista">Expected return date</string>
+    <string name="hint_configurar_alarme">Set alarm (date and time)</string>
+    <string name="label_titulo_artigo">Article Title</string>
+    <string name="label_autores_artigo">Authors</string>
+    <string name="label_periodico_artigo">Journal</string>
+    <string name="label_ano_artigo">Year</string>
+    <string name="label_doi_artigo">DOI</string>
+    <string name="label_link_artigo">Link</string>
+    <string name="label_paginas_artigo">Pages</string>
+    <string name="label_resumo_artigo">Article Abstract</string>
+    <string name="label_palavras_chave_artigo">Keywords</string>
+    <string name="label_categoria_livro">Category:</string>
+    <string name="valor_nao_informado">— Not informed —</string>
+    <string name="label_autores_livro">Author(s):</string>
+    <string name="label_editora_livro">Publisher:</string>
+    <string name="label_publicado_em">Published in:</string>
+    <string name="label_paginas_livro">Pages:</string>
+    <string name="label_descricao_livro">Description:</string>
+    <string name="label_palavras_chave_livro">Keywords:</string>
+    <string name="label_avaliacao_livro">Rating:</string>
+    <string name="label_data_aquisicao_nao_informado">Acquisition date: — Not informed —</string>
+    <string name="label_ja_foi_lido">Already read:</string>
+    <string name="hint_ano_publicacao_artigo">Year of publication</string>
+    <string name="hint_doi_artigo">DOI</string>
+    <string name="hint_link_artigo">Access link</string>
+    <string name="hint_resumo_artigo">Abstract</string>
+    <string name="btn_salvar_alteracoes">Save changes</string>
+    <string name="hint_categoria_livro">Category</string>
+    <string name="hint_editora_livro">Publisher</string>
+    <string name="hint_ano_publicacao_livro">Year of publication</string>
+    <string name="hint_numero_paginas_livro">Number of pages</string>
+    <string name="status_lido_animado">Read status animated</string>
+    <string name="hint_buscar">Search</string>
+    <string name="placeholder_emprestado_para">Loaned to John Doe</string>
+    <string name="placeholder_telefone">Phone: -</string>
+    <string name="label_telefone">Phone</string>
+    <string name="placeholder_data_emprestimo">Loaned on: 2025-11-16</string>
+    <string name="placeholder_data_prevista">Due on: 2025-11-20</string>
+    <string name="placeholder_data_devolucao">Returned on: 2025-11-18</string>
+    <string name="label_status">Status</string>
+    <string name="placeholder_autores_livro">Author(s)</string>
+    <string name="placeholder_categoria_livro">Category</string>
+    <string name="placeholder_paginas_livro">Pages</string>
+    <string name="icon_lido_desc">Read status icon</string>
+    <string name="msg_erro_resposta">Error %1$d - %2$s</string>
+    <string name="msg_excecao">Exception: %1$s</string>
+    <string name="title_cadastrar_artigo">Register Article</string>
+    <string name="msg_digite_doi_valido">Enter a valid DOI</string>
+    <string name="msg_digite_issn_valido">Enter a valid ISSN</string>
+    <string name="msg_artigo_salvo_sucesso">Article saved successfully!</string>
+    <string name="msg_artigo_encontrado_crossref">Article found in CrossRef</string>
+    <string name="title_cadastrar_livro">Register Book</string>
+    <string name="msg_digite_isbn">Enter ISBN</string>
+    <string name="msg_titulo_obrigatorio">Title required</string>
+    <string name="dialog_escolha_opcao">Choose an option</string>
+    <string name="opcao_tirar_foto">Take Photo</string>
+    <string name="opcao_selecionar_galeria">Select from Gallery</string>
+    <string name="dialog_alterar_capa">Change cover</string>
+    <string name="opcao_inserir_url">Insert URL</string>
+    <string name="dialog_inserir_url_capa">Insert cover URL</string>
+    <string name="hint_url_capa">https://example.com/cover.jpg</string>
+    <string name="btn_ok">OK</string>
+    <string name="msg_erro_salvar_livro">Error saving</string>
+    <string name="msg_erro_reconhecer_texto">Error recognizing text</string>
+    <string name="tab_detalhes">Details</string>
+    <string name="tab_editar">Edit</string>
+    <string name="placeholder_autores_nao_informados">Authors not provided</string>
+    <string name="placeholder_periodico_nao_informado">Journal not provided</string>
+    <string name="placeholder_ano_nao_informado">Year not provided</string>
+    <string name="placeholder_doi_nao_disponivel">DOI not available</string>
+    <string name="placeholder_link_nao_disponivel">Link not available</string>
+    <string name="placeholder_resumo_nao_disponivel">Abstract not available</string>
+    <string name="placeholder_palavras_chave_nao_informadas">Keywords not provided</string>
+    <string name="placeholder_paginas_nao_informadas">Page count not provided</string>
+    <string name="label_data_publicacao">Published on: </string>
+    <string name="placeholder_nao_informado">— Not provided —</string>
+    <string name="msg_artigo_atualizado_sucesso">Article updated successfully!</string>
+    <string name="msg_livro_atualizado_sucesso">Book updated successfully!</string>
+    <string name="label_emprestado_para">Loaned to: %1$s</string>
+    <string name="label_telefone_nao_informado">Phone: -</string>
+    <string name="label_devolucao_prevista">Return due: %1$s</string>
+    <string name="label_sem_prazo">No deadline</string>
+    <string name="btn_salvar">Save</string>
+    <string name="msg_preencha_campos">Fill in the fields correctly</string>
+    <string name="msg_lembrete_agendado">Reminder scheduled for %1$s</string>
+    <string name="msg_erro_agendar_lembrete">Error scheduling reminder: %1$s</string>
+    <string name="title_minha_estante">My Shelf</string>
+    <string name="tab_livros">Books</string>
+    <string name="tab_artigos">Articles</string>
+    <string name="btn_adicionar_livro">Add book</string>
+    <string name="btn_adicionar_artigo">Add article</string>
+    <string name="placeholder_livro">Book</string>
+    <string name="placeholder_contato">Contact</string>
+    <string name="notification_devolucao_proxima">Upcoming return</string>
+    <string name="notification_text_devolucao">The book \'%1$s\' loaned to %2$s is due soon.</string>
+    <string name="label_paginas_format">%1$d pages</string>
+    <string name="log_resposta_nula">Null response</string>
+    <string name="log_resposta_completa">Full response: %1$s</string>
+    <string name="channel_lembrete_nome">Loan Reminders</string>
+    <string name="channel_lembrete_descricao">Notifies when a loan return is near</string>
+    <string name="msg_permissao_concedida">Notification permission granted!</string>
+    <string name="msg_permissao_negada">Permission denied. Reminders may not appear.</string>
+    <string name="title_meu_controle">My Control</string>
+    <string name="tab_historico">History</string>
+    <string name="categoria_titulo">Title</string>
+    <string name="categoria_subtitulo">Subtitle</string>
+    <string name="categoria_autor">Author</string>
+    <string name="categoria_local">Location</string>
+    <string name="categoria_ano">Year</string>
+    <string name="categoria_editora">Publisher</string>
+    <string name="msg_resposta_sem_corpo">Response without body (%1$s)</string>
+    <string name="msg_excecao_api">Exception in %1$s: %2$s</string>
+    <string name="msg_permissao_camera_necessaria">Camera permission required</string>
+    <string name="msg_falha_scanner">Scanner failure: %1$s</string>
+    <string name="msg_erro_iniciar_camera">Error starting camera</string>
+    <string name="msg_isbn_detectado">ISBN: %1$s</string>
+    <string name="msg_categoria_salvas">Saved category</string>
+    <string name="msg_livro_desconhecido">Unknown book</string>
+    <string name="historico_emprestado_em">Borrowed on: %1$s</string>
+    <string name="historico_previsao">Expected date: %1$s</string>
+    <string name="historico_sem_prazo">No due date</string>
+    <string name="historico_devolvido_em">Returned on: %1$s</string>
+    <string name="historico_ainda_nao_devolvido">Not yet returned</string>
+    <string name="historico_devolvido">Returned</string>
+    <string name="historico_ativo">Active</string>
+    <string name="historico_emprestimos_realizados">%1$s loans made</string>
+
+</resources>

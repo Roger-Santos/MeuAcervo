@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- background (estrelas vazias) -->
+    <item android:id="@android:id/background">
+        <bitmap android:src="@drawable/ic_star_empty"
+            android:gravity="left|center_vertical" />
+    </item>
+
+    <!-- secondaryProgress (não usado, pode ser igual ao background) -->
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <bitmap android:src="@drawable/ic_star_empty"
+                android:gravity="left|center_vertical" />
+        </clip>
+    </item>
+
+    <!-- progress (estrela preenchida) -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <bitmap android:src="@drawable/ic_star_filled"
+                android:gravity="left|center_vertical" />
+        </clip>
+    </item>
+</layer-list>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MeuAcervo"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.controle.MeuControleActivity"
+            android:exported="false"
+            android:label="@string/title_activity_meu_controle"
+            android:theme="@style/Theme.MeuAcervo" />
+        <activity
+            android:name=".ui.cadastro.CadastroArtigoActivity"
+            android:exported="false"
+            android:label="@string/title_activity_cadastro_artigo"
+            android:theme="@style/Theme.MeuAcervo" />
+        <activity
+            android:name=".ui.scanner.ScannerIsbnActivity"
+            android:exported="false"
+            android:label="@string/title_activity_scanner_isbn"
+            android:theme="@style/Theme.MeuAcervo" />
+        <activity
+            android:name=".ui.detalhes.DetalhesLivroActivity"
+            android:exported="false"
+            android:label="@string/title_activity_detalhes_livro"
+            android:theme="@style/Theme.MeuAcervo" />
+        <activity
+            android:name=".ui.detalhes.DetalhesArtigoActivity"
+            android:exported="false"
+            android:label="@string/title_activity_detalhes_artigo"
+            android:theme="@style/Theme.MeuAcervo" />
+        <activity
+            android:name=".ui.estante.EstanteActivity"
+            android:exported="false"
+            android:label="@string/title_activity_estante"
+            android:theme="@style/Theme.MeuAcervo" />
+        <activity
+            android:name=".ui.opcoes.OpcoesActivity"
+            android:exported="false"
+            android:label="@string/title_activity_opcoes"
+            android:theme="@style/Theme.MeuAcervo" />
+        <activity
+            android:name=".ui.cadastro.CadastroLivroActivity"
+            android:exported="false"
+            android:label="@string/title_activity_cadastro_livro"
+            android:theme="@style/Theme.MeuAcervo" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MeuAcervo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6771346576183891~5701464298"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,84 @@
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:strokeColor="@color/divideColor"
+    app:strokeWidth="1dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Título em destaque -->
+        <TextView
+            android:id="@+id/tvTituloArtigoItem"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_titulo_artigo"
+            android:ellipsize="end"
+            android:maxLines="2"/>
+
+        <!-- Autores -->
+        <TextView
+            android:id="@+id/tvAutoresArtigoItem"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_autores_artigo"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Periódico -->
+        <TextView
+            android:id="@+id/tvPeriodicoArtigoItem"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_periodico_artigo"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:layout_marginTop="2dp"/>
+
+        <!-- Linha inferior: Ano + Rating + Ícone de lido -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tvAnoArtigoItem"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder_ano_artigo"/>
+
+            <RatingBar
+                android:id="@+id/ratingBarArtigoItem"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="1.0"
+                android:layout_marginStart="16dp"/>
+
+            <ImageView
+                android:id="@+id/ivLidoArtigo"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_check_circle"
+                app:tint="@color/disabledIcon"/>
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <!-- Capa do livro -->
+    <ImageView
+        android:id="@+id/ivCapaHistorico"
+        android:layout_width="60dp"
+        android:layout_height="90dp"
+        android:src="@drawable/ic_capa_placeholder"
+        android:scaleType="centerCrop"
+        android:layout_marginEnd="12dp"/>
+
+    <!-- Informações -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <!-- Título do livro -->
+        <TextView
+            android:id="@+id/tvLivroHistorico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_titulo_livro"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+
+        <!-- Pessoa -->
+        <TextView
+            android:id="@+id/tvPessoaHistorico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_emprestado_para"
+            android:textSize="14sp"/>
+
+        <!-- Telefone -->
+        <TextView
+            android:id="@+id/tvTelefoneHistorico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_telefone"
+            android:textSize="14sp"/>
+
+        <!-- Data empréstimo -->
+        <TextView
+            android:id="@+id/tvDataEmprestimoHistorico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_data_emprestimo"
+            android:textSize="14sp"/>
+
+        <!-- Data prevista -->
+        <TextView
+            android:id="@+id/tvDataPrevistaHistorico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_data_prevista"
+            android:textSize="14sp"/>
+
+        <!-- Data devolução -->
+        <TextView
+            android:id="@+id/tvDataDevolucaoHistorico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_data_devolucao"
+            android:textSize="14sp"
+            android:textColor="@android:color/holo_green_dark"/>
+
+        <!-- Status -->
+        <TextView
+            android:id="@+id/tvStatusHistorico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_status"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:layout_marginTop="4dp"/>
+    </LinearLayout>
+</LinearLayout>

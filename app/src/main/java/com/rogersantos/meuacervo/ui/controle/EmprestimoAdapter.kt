@@ -1,0 +1,115 @@
+package com.rogersantos.meuacervo.ui.controle
+
+import android.graphics.Color
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.rogersantos.meuacervo.R
+import com.rogersantos.meuacervo.data.database.LivroDatabase
+import com.rogersantos.meuacervo.data.model.Emprestimo
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.*
+
+class EmprestimoAdapter(
+    private val onDevolver: (Emprestimo) -> Unit
+) : ListAdapter<Emprestimo, EmprestimoAdapter.ViewHolder>(DiffCallback()) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_emprestimo, parent, false)
+        return ViewHolder(v)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(getItem(position), onDevolver)
+    }
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val cardView: CardView = itemView.findViewById(R.id.cardEmprestimo)
+        private val ivCapaLivro: ImageView = itemView.findViewById(R.id.ivCapaLivro)
+        private val tvTituloLivro: TextView = itemView.findViewById(R.id.tvTituloLivro)
+        private val tvPessoa: TextView = itemView.findViewById(R.id.tvPessoa)
+        private val tvTelefone: TextView = itemView.findViewById(R.id.tvTelefone)
+        private val tvDataPrevista: TextView = itemView.findViewById(R.id.tvDataPrevista)
+        private val icAlarme: ImageView = itemView.findViewById(R.id.icAlarme)
+        private val tvAlarme: TextView = itemView.findViewById(R.id.tvAlarme)
+        private val btnDevolver: Button = itemView.findViewById(R.id.btnDevolver)
+
+        fun bind(e: Emprestimo, onDevolver: (Emprestimo) -> Unit) {
+            tvPessoa.text = itemView.context.getString(R.string.label_emprestado_para, e.pessoa)
+            tvTelefone.text = e.telefone?.let { itemView.context.getString(R.string.label_telefone) + " $it"} ?: itemView.context.getString(R.string.label_telefone_nao_informado)
+            tvDataPrevista.text = e.dataPrevistaDevolucao?.let { itemView.context.getString(R.string.label_devolucao_prevista, it) } ?: itemView.context.getString(R.string.label_sem_prazo)
+
+            // Verifica se está atrasado
+            val atrasado = try {
+                e.dataPrevistaDevolucao?.let {
+                    val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                    val dataPrevista = sdf.parse(it)
+                    dataPrevista != null && dataPrevista.before(Date())
+                } ?: false
+            } catch (_: Exception) {
+                false
+            }
+
+            // Aplica cor diferente no card se atrasado
+            cardView.setCardBackgroundColor(
+                if (atrasado) Color.parseColor("#FFEBEE") // vermelho bem claro
+                else Color.WHITE
+            )
+
+            // Indicador de alarme
+            if (!e.lembreteWorkId.isNullOrEmpty()) {
+                icAlarme.visibility = View.VISIBLE
+                tvAlarme.visibility = View.VISIBLE
+            } else {
+                icAlarme.visibility = View.GONE
+                tvAlarme.visibility = View.GONE
+            }
+
+            // Buscar informações do livro
+            val context = itemView.context
+            val dao = LivroDatabase.getInstance(context).livroDao()
+            CoroutineScope(Dispatchers.IO).launch {
+                val livro = dao.buscarPorId(e.livroId)
+                withContext(Dispatchers.Main) {
+                    if (livro != null) {
+                        tvTituloLivro.text = livro.titulo
+                        val capa = livro.capaPath ?: livro.urlCapa
+                        if (!capa.isNullOrBlank()) {
+                            val requestOptions = RequestOptions()
+                                .centerCrop()
+                                .placeholder(R.drawable.ic_capa_placeholder)
+                                .error(R.drawable.ic_capa_placeholder)
+
+                            Glide.with(context)
+                                .load(if (capa.startsWith("//")) "https:$capa" else capa)
+                                .apply(requestOptions)
+                                .into(ivCapaLivro)
+                        } else {
+                            ivCapaLivro.setImageResource(R.drawable.ic_capa_placeholder)
+                        }
+                    }
+                }
+            }
+
+            btnDevolver.setOnClickListener { onDevolver(e) }
+        }
+    }
+
+    class DiffCallback : DiffUtil.ItemCallback<Emprestimo>() {
+        override fun areItemsTheSame(o: Emprestimo, n: Emprestimo) = o.id == n.id
+        override fun areContentsTheSame(o: Emprestimo, n: Emprestimo) = o == n
+    }
+}
