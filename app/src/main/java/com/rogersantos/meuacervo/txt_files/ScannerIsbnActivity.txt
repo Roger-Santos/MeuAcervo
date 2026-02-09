@@ -144,7 +144,7 @@ class ScannerIsbnActivity : AppCompatActivity() {
                 cameraProvider.bindToLifecycle(this, cameraSelector, preview, analysis)
             } catch (e: Exception) {
                 Log.e(TAG, "Erro ao ligar câmera: ${e.message}", e)
-                Toast.makeText(this, "@string/msg_erro_iniciar_camera", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_erro_iniciar_camera), Toast.LENGTH_SHORT).show()
                 setResult(Activity.RESULT_CANCELED)
                 finish()
             }

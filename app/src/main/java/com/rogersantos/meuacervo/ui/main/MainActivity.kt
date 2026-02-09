@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
@@ -41,12 +42,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun criarCanalNotificacao() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val nome = getString(R.string.channel_lembrete_nome)
+            val descricao = getString(R.string.channel_lembrete_descricao)
+
             val channel = android.app.NotificationChannel(
                 "lembrete_channel",
-                "string/channel_lembrete_nome",
+                nome,
                 android.app.NotificationManager.IMPORTANCE_HIGH
             ).apply {
-                description = "string/channel_lembrete_descricao"
+                description = descricao
             }
 
             val manager = getSystemService(android.app.NotificationManager::class.java)
@@ -74,12 +78,5 @@ class MainActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == 100) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "string/msg_permissao_concedida", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "string/msg_permissao_negada", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 }

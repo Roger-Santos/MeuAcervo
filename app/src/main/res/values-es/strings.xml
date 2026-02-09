@@ -278,5 +278,9 @@
     <string name="historico_devolvido">Devolución</string>
     <string name="historico_ativo">Activo</string>
     <string name="historico_emprestimos_realizados">%1$s préstamos hechos</string>
+    <string name="msg_isbn_invalido">ISBN inválido</string>
+    <string name="msg_nenhum_livro_encontrado">No se encontró ningún libro</string>
+    <string name="msg_campos_atualizados_apis">Campos actualizados desde las API</string>
+    <string name="msg_erro_buscar_livro">Error al buscar el libro: %1$s</string>
 
 </resources>

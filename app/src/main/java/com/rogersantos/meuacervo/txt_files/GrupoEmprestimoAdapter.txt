@@ -36,7 +36,7 @@ class GrupoEmprestimoAdapter :
 
         fun bind(grupo: EmprestimoGrupo) {
             tvTituloLivro.text = grupo.tituloLivro
-            tvQtdEmprestimos.text = "${grupo.emprestimos.size} empréstimos realizados"
+            tvQtdEmprestimos.text = itemView.context.getString(R.string.historico_emprestimos_realizados, "" + grupo.emprestimos.size)
 
             val capa = grupo.capaLivro
             if (!capa.isNullOrBlank()) {
@@ -72,17 +72,17 @@ class GrupoEmprestimoAdapter :
                 val tvStatus = linha.findViewById<TextView>(R.id.tvStatusDetalhe)
 
                 val telefone = e.telefone ?: "-"
-                val previsao = e.dataPrevistaDevolucao ?: "Sem prazo"
+                val previsao = e.dataPrevistaDevolucao ?: itemView.context.getString(R.string.historico_sem_prazo)
 
                 // Determina status
                 val status = when {
-                    e.devolvido -> "Devolvido"
+                    e.devolvido -> itemView.context.getString(R.string.historico_devolvido)
                     e.dataPrevistaDevolucao != null -> {
                         val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                         val dataPrevista = try { sdf.parse(e.dataPrevistaDevolucao) } catch (_: Exception) { null }
-                        if (dataPrevista != null && dataPrevista.before(Date())) "Atrasado" else "Em aberto"
+                        if (dataPrevista != null && dataPrevista.before(Date())) itemView.context.getString(R.string.status_atrasado) else itemView.context.getString(R.string.status_em_aberto)
                     }
-                    else -> "Em aberto"
+                    else -> itemView.context.getString(R.string.status_em_aberto)
                 }
 
                 tvPessoa.text = e.pessoa
@@ -91,8 +91,8 @@ class GrupoEmprestimoAdapter :
                 // Aplica cor dinâmica ao chip de status
                 val context = itemView.context
                 val cor = when (status) {
-                    "Devolvido" -> ContextCompat.getColor(context, android.R.color.holo_green_dark)
-                    "Atrasado" -> ContextCompat.getColor(context, android.R.color.holo_red_dark)
+                    itemView.context.getString(R.string.historico_devolvido) -> ContextCompat.getColor(context, android.R.color.holo_green_dark)
+                    itemView.context.getString(R.string.status_atrasado) -> ContextCompat.getColor(context, android.R.color.holo_red_dark)
                     else -> ContextCompat.getColor(context, android.R.color.holo_orange_dark)
                 }
                 tvStatus.text = status
