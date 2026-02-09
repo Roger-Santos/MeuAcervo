@@ -1,7 +1,9 @@
 package com.rogersantos.meuacervo.ui.estante
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.MaterialToolbar
@@ -13,6 +15,13 @@ import com.rogersantos.meuacervo.ui.cadastro.CadastroArtigoActivity
 import com.rogersantos.meuacervo.ui.cadastro.CadastroLivroActivity
 import com.rogersantos.meuacervo.R
 
+// Imports do AdMob
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.AdView
+
 class EstanteActivity : AppCompatActivity() {
 
     private lateinit var toolbar: MaterialToolbar
@@ -20,9 +29,17 @@ class EstanteActivity : AppCompatActivity() {
     private lateinit var viewPager: ViewPager2
     private lateinit var fabAdd: FloatingActionButton
 
+    // Variáveis para anúncio
+    private var interstitialAd: InterstitialAd? = null
+    private lateinit var prefs: SharedPreferences
+    private lateinit var adView: AdView   // Banner
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_estante)
+
+        // Inicializa SharedPreferences
+        prefs = getSharedPreferences("meuacervo_prefs", MODE_PRIVATE)
 
         // Toolbar moderna
         toolbar = findViewById(R.id.toolbarEstante)
@@ -58,6 +75,19 @@ class EstanteActivity : AppCompatActivity() {
                 1 -> startActivity(Intent(this, CadastroArtigoActivity::class.java))
             }
         }
+
+        // Incrementa contador persistido
+        val contador = incrementarContador()
+        Log.d("AD", "Resultado: " + (contador % 10))
+        // Exibe anúncio intersticial a cada 10 acessos
+        if (contador % 10 == 0) {
+            carregarInterstitial()
+        }
+
+        // Banner fixo no rodapé
+        adView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 
     private fun atualizarFabParaAba(position: Int) {
@@ -78,5 +108,53 @@ class EstanteActivity : AppCompatActivity() {
             finish()
             true
         } else super.onOptionsItemSelected(item)
+    }
+
+    // Função para incrementar contador usando SharedPreferences
+    private fun incrementarContador(): Int {
+        val atual = prefs.getInt("contador_estante", 0) + 1
+        prefs.edit().putInt("contador_estante", atual).apply()
+        return atual
+    }
+
+    // Funções para carregar e mostrar intersticial
+    private fun carregarInterstitial() {
+        val adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(
+            this,
+            "ca-app-pub-6771346576183891/2959750886", // ✅ ID real do AdMob
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdLoaded(ad: InterstitialAd) {
+                    interstitialAd = ad
+                    mostrarInterstitial()
+                }
+
+                override fun onAdFailedToLoad(error: LoadAdError) {
+                    interstitialAd = null
+                }
+            }
+        )
+    }
+
+    private fun mostrarInterstitial() {
+        interstitialAd?.show(this)
+    }
+
+    // Ciclo de vida do Banner
+    override fun onPause() {
+        adView.pause()
+        super.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adView.resume()
+    }
+
+    override fun onDestroy() {
+        adView.destroy()
+        super.onDestroy()
     }
 }

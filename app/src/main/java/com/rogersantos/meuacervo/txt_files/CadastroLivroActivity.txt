@@ -559,7 +559,7 @@ class CadastroLivroActivity : AppCompatActivity() {
         val image = InputImage.fromBitmap(bitmap, 0)
         recognizer.process(image)
             .addOnSuccessListener { visionText -> exibirPalavras(visionText.text) }
-            .addOnFailureListener { Toast.makeText(this, "Erro ao reconhecer texto", Toast.LENGTH_SHORT).show() }
+            .addOnFailureListener { Toast.makeText(this, getString(R.string.msg_erro_reconhecer_texto), Toast.LENGTH_SHORT).show() }
     }
 
     private fun exibirPalavras(texto: String) {
@@ -820,7 +820,7 @@ class CadastroLivroActivity : AppCompatActivity() {
         val isbn = rawIsbn.filter { it.isDigit() }
         if (isbn.isEmpty()) {
             withContext(Dispatchers.Main) {
-                Toast.makeText(this@CadastroLivroActivity, "ISBN inválido", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CadastroLivroActivity, getString(R.string.msg_isbn_invalido), Toast.LENGTH_SHORT).show()
             }
             return
         }
@@ -910,16 +910,16 @@ class CadastroLivroActivity : AppCompatActivity() {
             withContext(Dispatchers.Main) {
                 hideLoading()
                 if (finalEmpty) {
-                    Toast.makeText(this@CadastroLivroActivity, "Nenhum livro encontrado ❌", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@CadastroLivroActivity, getString(R.string.msg_nenhum_livro_encontrado), Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(this@CadastroLivroActivity, "Campos atualizados a partir das APIs", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@CadastroLivroActivity, getString(R.string.msg_campos_atualizados_apis), Toast.LENGTH_SHORT).show()
                 }
             }
         } catch (e: Exception) {
             Log.e(TAG, "Erro na busca em cascata: ${e.message}", e)
             withContext(Dispatchers.Main) {
                 hideLoading()
-                Toast.makeText(this@CadastroLivroActivity, "Erro ao buscar livro: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@CadastroLivroActivity, getString(R.string.msg_erro_buscar_livro, e.message ?: ""), Toast.LENGTH_LONG).show()
             }
         }
     }

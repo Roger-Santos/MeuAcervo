@@ -277,4 +277,10 @@
     <string name="historico_devolvido">Devolvido</string>
     <string name="historico_ativo">Ativo</string>
     <string name="historico_emprestimos_realizados">%1$s empréstimos realizados</string>
+
+    <string name="msg_isbn_invalido">ISBN inválido</string>
+    <string name="msg_nenhum_livro_encontrado">Nenhum livro encontrado</string>
+    <string name="msg_campos_atualizados_apis">Campos atualizados a partir das APIs</string>
+    <string name="msg_erro_buscar_livro">Erro ao buscar livro: %1$s</string>
+
 </resources>

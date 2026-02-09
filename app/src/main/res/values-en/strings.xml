@@ -277,5 +277,9 @@
     <string name="historico_devolvido">Returned</string>
     <string name="historico_ativo">Active</string>
     <string name="historico_emprestimos_realizados">%1$s loans made</string>
+    <string name="msg_isbn_invalido">Invalid ISBN</string>
+    <string name="msg_nenhum_livro_encontrado">No book found</string>
+    <string name="msg_campos_atualizados_apis">Fields updated from APIs</string>
+    <string name="msg_erro_buscar_livro">Error fetching book: %1$s</string>
 
 </resources>

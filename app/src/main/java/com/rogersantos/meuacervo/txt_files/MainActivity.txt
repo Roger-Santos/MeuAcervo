@@ -11,6 +11,7 @@ import com.google.android.material.button.MaterialButton
 import com.rogersantos.meuacervo.ui.estante.EstanteActivity
 import com.rogersantos.meuacervo.ui.controle.MeuControleActivity
 import com.rogersantos.meuacervo.R
+import com.google.android.gms.ads.MobileAds
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.Theme_MeuAcervo)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        MobileAds.initialize(this) {}
 
         // Botões com navegação
         val btnAbrirEstante = findViewById<MaterialButton>(R.id.btnAbrirEstante)
@@ -71,12 +74,5 @@ class MainActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == 100) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "string/msg_permissao_concedida", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "string/msg_permissao_negada", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 }
