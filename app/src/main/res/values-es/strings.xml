@@ -293,4 +293,5 @@
     <string name="btn_excluir">Eliminar</string>
     <string name="msg_livro_excluido">Libro eliminado con éxito.</string>
 
+    <string name="notification_texto_devolucao">El libro "%1$s" prestado a %2$s está próximo a la devolución.</string>
 </resources>

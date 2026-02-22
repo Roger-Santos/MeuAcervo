@@ -1,11 +1,14 @@
 package com.rogersantos.meuacervo.ui.detalhes
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rogersantos.meuacervo.R
@@ -35,6 +38,9 @@ class DetalhesLivroActivity : AppCompatActivity() {
         // título sempre branco
         toolbar.setTitleTextColor(ContextCompat.getColor(this, android.R.color.white))
 
+        // Força os ícones do menu (incluindo os três pontos) a ficarem brancos
+        toolbar.overflowIcon?.setTint(ContextCompat.getColor(this, android.R.color.white))
+
         livroId = intent.getIntExtra("livroId", -1)
 
         // Atualiza título dinamicamente com nome do livro
@@ -57,11 +63,45 @@ class DetalhesLivroActivity : AppCompatActivity() {
         }.attach()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_detalhes_livro, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (item.itemId == android.R.id.home) {
-            finish()
-            true
-        } else super.onOptionsItemSelected(item)
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            R.id.action_excluir_livro -> {
+                confirmarExclusaoLivro()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun confirmarExclusaoLivro() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(getString(R.string.title_confirmar_exclusao))
+            .setMessage(getString(R.string.msg_confirmar_exclusao_livro))
+            .setPositiveButton(getString(R.string.btn_excluir)) { _, _ ->
+                if (livroId != -1) {
+                    MainScope().launch {
+                        val dao = AppDatabase.getInstance(applicationContext).livroDao()
+                        withContext(Dispatchers.IO) {
+                            val livro = dao.buscarPorId(livroId)
+                            livro?.let { dao.deletar(it) }
+                        }
+                        Toast.makeText(this@DetalhesLivroActivity, getString(R.string.msg_livro_excluido), Toast.LENGTH_SHORT).show()
+                        setResult(RESULT_OK)
+                        finish()
+                    }
+                }
+            }
+            .setNegativeButton(getString(R.string.btn_cancelar), null)
+            .show()
     }
 
     override fun onResume() {

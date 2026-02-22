@@ -293,6 +293,8 @@
     <string name="btn_excluir">Excluir</string>
     <string name="msg_livro_excluido">Livro excluído com sucesso.</string>
 
+    <string name="notification_texto_devolucao">O livro "%1$s" emprestado para %2$s está próximo da devolução.</string>
+
 
 
 </resources>
