@@ -7,6 +7,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -19,6 +21,8 @@ import com.rogersantos.meuacervo.data.model.Livro
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.*
 
 class EstanteLivrosFragment : Fragment(R.layout.fragment_estante_lista) {
     private lateinit var recycler: RecyclerView
@@ -33,14 +37,19 @@ class EstanteLivrosFragment : Fragment(R.layout.fragment_estante_lista) {
         search = view.findViewById(R.id.etSearch)
 
         recycler.layoutManager = GridLayoutManager(requireContext(), 1)
-        adapter = LivroAdapter { livro ->
-            val intent = Intent(requireContext(), DetalhesLivroActivity::class.java)
-            intent.putExtra("livroId", livro.id)
-            startActivity(intent)
-        }
+        adapter = LivroAdapter(
+            onClick = { livro ->
+                val intent = Intent(requireContext(), DetalhesLivroActivity::class.java)
+                intent.putExtra("livroId", livro.id)
+                startActivity(intent)
+            },
+            onLongClick = { livro ->
+                confirmarRemocao(livro)
+            }
+        )
         recycler.adapter = adapter
 
-        // Adiciona espaçamento entre os cards
+        // Espaçamento entre os cards
         recycler.addItemDecoration(object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(
                 outRect: Rect,
@@ -48,8 +57,8 @@ class EstanteLivrosFragment : Fragment(R.layout.fragment_estante_lista) {
                 parent: RecyclerView,
                 state: RecyclerView.State
             ) {
-                outRect.bottom = 16   // margem inferior entre cards
-                outRect.left = 8      // margem lateral
+                outRect.bottom = 16
+                outRect.left = 8
                 outRect.right = 8
             }
         })
@@ -87,5 +96,54 @@ class EstanteLivrosFragment : Fragment(R.layout.fragment_estante_lista) {
         }
         adapter.submitList(filtrados)
         empty.visibility = if (filtrados.isEmpty()) View.VISIBLE else View.GONE
+    }
+
+    private fun confirmarRemocao(livro: Livro) {
+        AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.titulo_remover_livro))
+            .setMessage(getString(R.string.msg_confirmar_remocao, livro.titulo))
+            .setPositiveButton(R.string.btn_remover) { _, _ ->
+                removerLivro(livro)
+            }
+            .setNegativeButton(R.string.btn_cancelar, null)
+            .show()
+    }
+
+    private fun removerLivro(livro: Livro) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            val db = LivroDatabase.getInstance(requireContext())
+            val livroDao = db.livroDao()
+            val emprestimoDao = db.emprestimoDao()
+
+            withContext(Dispatchers.IO) {
+                // 1. Encerrar empréstimos ativos
+                val emprestimos = emprestimoDao.buscarPorLivroId(livro.id)
+                emprestimos.forEach { emprestimo ->
+                    if (!emprestimo.devolvido) {
+                        emprestimo.devolvido = true
+                        emprestimo.dataDevolucao = SimpleDateFormat(
+                            "yyyy-MM-dd HH:mm",
+                            Locale.getDefault()
+                        ).format(Date())
+                        emprestimoDao.atualizar(emprestimo)
+                    }
+                }
+
+                // 2. Excluir histórico de empréstimos
+                emprestimoDao.deletarPorLivroId(livro.id)
+
+                // 3. Excluir o livro
+                livroDao.deletar(livro)
+            }
+
+            carregarLivros()
+
+            // 4. Feedback ao usuário
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.msg_livro_removido, livro.titulo),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }

@@ -282,4 +282,16 @@
     <string name="msg_campos_atualizados_apis">Fields updated from APIs</string>
     <string name="msg_erro_buscar_livro">Error fetching book: %1$s</string>
 
+    <string name="titulo_remover_livro">Remove book</string>
+    <string name="msg_confirmar_remocao">Do you want to remove the book "%1$s"?</string>
+    <string name="btn_remover">Remove</string>
+    <string name="msg_livro_removido">Book "%1$s" removed successfully.</string>
+
+    <string name="title_confirmar_exclusao">Confirm deletion</string>
+    <string name="msg_confirmar_exclusao_livro">Are you sure you want to delete this book? This action cannot be undone.</string>
+    <string name="btn_excluir">Delete</string>
+    <string name="msg_livro_excluido">Book deleted successfully.</string>
+
+
+
 </resources>

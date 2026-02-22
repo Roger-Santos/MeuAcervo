@@ -1,0 +1,62 @@
+package com.rogersantos.meuacervo.data.database
+
+import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.rogersantos.meuacervo.data.dao.LivroDao
+import com.rogersantos.meuacervo.data.dao.EmprestimoDao
+import com.rogersantos.meuacervo.data.model.Livro
+import com.rogersantos.meuacervo.data.model.Emprestimo
+
+@Database(
+    entities = [Livro::class, Emprestimo::class],
+    version = 2,
+    exportSchema = true
+)
+abstract class LivroDatabase : RoomDatabase() {
+
+    abstract fun livroDao(): LivroDao
+    abstract fun emprestimoDao(): EmprestimoDao
+
+    companion object {
+        @Volatile
+        private var INSTANCE: LivroDatabase? = null
+
+        fun getInstance(context: Context): LivroDatabase {
+            return INSTANCE ?: synchronized(this) {
+                Room.databaseBuilder(
+                    context.applicationContext,
+                    LivroDatabase::class.java,
+                    "livro_db"
+                )
+                    // 🔹 adiciona migration para não perder dados
+                    .addMigrations(MIGRATION_1_2)
+                    .build().also { INSTANCE = it }
+            }
+        }
+
+        // Migration da versão 1 para 2
+        private val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                // Cria a nova tabela de empréstimos com chave estrangeira
+                database.execSQL("""
+                    CREATE TABLE IF NOT EXISTS emprestimos (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                        livroId INTEGER NOT NULL,
+                        pessoa TEXT NOT NULL,
+                        telefone TEXT,
+                        dataEmprestimo TEXT NOT NULL,
+                        dataPrevistaDevolucao TEXT,
+                        devolvido INTEGER NOT NULL DEFAULT 0,
+                        dataDevolucao TEXT,
+                        lembreteWorkId TEXT,
+                        FOREIGN KEY(livroId) REFERENCES livros(id) ON DELETE CASCADE
+                    )
+                """.trimIndent())
+            }
+        }
+    }
+}
