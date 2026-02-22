@@ -16,7 +16,8 @@ import com.rogersantos.meuacervo.R
 import com.rogersantos.meuacervo.data.model.Livro
 
 class LivroAdapter(
-    private val onClick: (Livro) -> Unit
+    private val onClick: (Livro) -> Unit,
+    private val onLongClick: (Livro) -> Unit   // novo callback para clique longo
 ) : ListAdapter<Livro, LivroAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,7 +28,7 @@ class LivroAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val livro = getItem(position)
-        holder.bind(livro, onClick)
+        holder.bind(livro, onClick, onLongClick)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,20 +40,28 @@ class LivroAdapter(
         private val ratingBar: RatingBar = itemView.findViewById(R.id.ratingBarItem)
         private val imgLido: ImageView = itemView.findViewById(R.id.ivLido)
 
-        fun bind(livro: Livro, onClick: (Livro) -> Unit) {
+        fun bind(livro: Livro, onClick: (Livro) -> Unit, onLongClick: (Livro) -> Unit) {
             val context = itemView.context
 
-            // Título (sempre 2 linhas, ellipsize já definido no XML)
-            txtTitulo.text = livro.titulo.ifBlank { itemView.context.getString(R.string.placeholder_titulo_livro) }
+            // Título
+            txtTitulo.text = livro.titulo.ifBlank {
+                itemView.context.getString(R.string.placeholder_titulo_livro)
+            }
 
             // Autor
-            txtAutor.text = livro.autores?.ifBlank { itemView.context.getString(R.string.placeholder_autores_livro) } ?: itemView.context.getString(R.string.placeholder_autores_livro)
+            txtAutor.text = livro.autores?.ifBlank {
+                itemView.context.getString(R.string.placeholder_autores_livro)
+            } ?: itemView.context.getString(R.string.placeholder_autores_livro)
 
             // Categoria
-            txtCategoria?.text = livro.categoria?.ifBlank { itemView.context.getString(R.string.placeholder_categoria_livro) } ?: itemView.context.getString(R.string.placeholder_categoria_livro)
+            txtCategoria?.text = livro.categoria?.ifBlank {
+                itemView.context.getString(R.string.placeholder_categoria_livro)
+            } ?: itemView.context.getString(R.string.placeholder_categoria_livro)
 
             // Páginas
-            txtPaginas?.text = livro.paginas?.takeIf { it > 0 }?.let { itemView.context.getString(R.string.label_paginas_format, it) } ?: itemView.context.getString(R.string.placeholder_paginas_livro)
+            txtPaginas?.text = livro.paginas?.takeIf { it > 0 }?.let {
+                itemView.context.getString(R.string.label_paginas_format, it)
+            } ?: itemView.context.getString(R.string.placeholder_paginas_livro)
 
             // Nota
             ratingBar.rating = livro.nota?.toFloat() ?: 0f
@@ -64,7 +73,6 @@ class LivroAdapter(
 
             // Capa
             Glide.with(context).clear(imgCapa)
-
             val requestOptions = RequestOptions()
                 .centerCrop()
                 .placeholder(R.drawable.ic_capa_placeholder)
@@ -89,8 +97,14 @@ class LivroAdapter(
                 }
             }
 
-            // Clique no card
+            // Clique simples
             itemView.setOnClickListener { onClick(livro) }
+
+            // Clique longo → chama callback para abrir diálogo
+            itemView.setOnLongClickListener {
+                onLongClick(livro)
+                true
+            }
         }
     }
 

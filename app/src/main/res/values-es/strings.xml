@@ -283,4 +283,14 @@
     <string name="msg_campos_atualizados_apis">Campos actualizados desde las API</string>
     <string name="msg_erro_buscar_livro">Error al buscar el libro: %1$s</string>
 
+    <string name="titulo_remover_livro">Eliminar libro</string>
+    <string name="msg_confirmar_remocao">¿Desea eliminar el libro "%1$s"?</string>
+    <string name="btn_remover">Eliminar</string>
+    <string name="msg_livro_removido">Libro "%1$s" eliminado con éxito.</string>
+
+    <string name="title_confirmar_exclusao">Confirmar eliminación</string>
+    <string name="msg_confirmar_exclusao_livro">¿Está seguro de que desea eliminar este libro? Esta acción no se puede deshacer.</string>
+    <string name="btn_excluir">Eliminar</string>
+    <string name="msg_livro_excluido">Libro eliminado con éxito.</string>
+
 </resources>

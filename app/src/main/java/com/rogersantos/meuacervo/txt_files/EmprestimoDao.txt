@@ -26,4 +26,12 @@ interface EmprestimoDao {
     // Busca um empréstimo específico pelo ID
     @Query("SELECT * FROM emprestimos WHERE id = :id LIMIT 1")
     suspend fun buscarPorId(id: Int): Emprestimo?
+
+    // 🔹 Buscar todos os empréstimos vinculados a um livro
+    @Query("SELECT * FROM emprestimos WHERE livroId = :livroId ORDER BY dataEmprestimo DESC")
+    suspend fun buscarPorLivroId(livroId: Int): List<Emprestimo>
+
+    // 🔹 Excluir todos os empréstimos de um livro
+    @Query("DELETE FROM emprestimos WHERE livroId = :livroId")
+    suspend fun deletarPorLivroId(livroId: Int)
 }

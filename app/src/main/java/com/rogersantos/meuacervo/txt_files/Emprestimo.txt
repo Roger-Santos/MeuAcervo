@@ -6,12 +6,12 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "emprestimos")
 data class Emprestimo(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val livroId: Int,                        // 👈 vínculo com Livro
+    val livroId: Int,                        // vínculo com Livro
     val pessoa: String,
     val telefone: String?,
     val dataEmprestimo: String,
     val dataPrevistaDevolucao: String?,
-    val devolvido: Boolean = false,
-    val dataDevolucao: String? = null,
+    var devolvido: Boolean = false,          // agora é var
+    var dataDevolucao: String? = null,       // agora é var
     val lembreteWorkId: String? = null
 )
