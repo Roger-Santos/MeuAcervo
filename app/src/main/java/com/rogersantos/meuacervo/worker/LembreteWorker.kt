@@ -15,13 +15,13 @@ class LembreteWorker(
 ) : Worker(ctx, params) {
 
     override fun doWork(): Result {
-        val titulo = inputData.getString("titulo") ?: "@string/placeholder_livro"
-        val pessoa = inputData.getString("pessoa") ?: "@string/placeholder_contato"
+        val titulo = inputData.getString("titulo") ?: applicationContext.getString(R.string.placeholder_livro)
+        val pessoa = inputData.getString("pessoa") ?: applicationContext.getString(R.string.placeholder_contato)
 
         val builder = NotificationCompat.Builder(applicationContext, "lembrete_channel")
             .setSmallIcon(R.drawable.ic_add_book) // ícone em drawable
-            .setContentTitle("@string/notification_devolucao_proxima")
-            .setContentText("@string/notification_texto_devolucao")
+            .setContentTitle(applicationContext.getString(R.string.notification_devolucao_proxima))
+            .setContentText(applicationContext.getString(R.string.notification_text_devolucao, titulo, pessoa))
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
 
