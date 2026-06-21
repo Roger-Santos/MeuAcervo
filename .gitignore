@@ -11,3 +11,13 @@ build/
 
 # Cache
 .cxx/
+# Builds e binários
+*.aab
+*.apk
+app/release/
+
+# Específico de máquina
+local.properties
+
+# Cópias de contexto/IA (não fazem parte do código de produção)
+txt_files/
