@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Meu Acervo</string>
 
+    <string name="admob_app_id" translatable="false">ca-app-pub-6771346576183891~5701464298</string>
+    <string name="admob_banner_estante" translatable="false">ca-app-pub-6771346576183891/6371757213</string>
+
     <string name="title_activity_cadastro_livro">Cadastrar Livro</string>
     <string name="title_activity_cadastro_artigo">Cadastrar Artigo</string>
     <string name="title_activity_meu_controle">Meu Controle</string>
