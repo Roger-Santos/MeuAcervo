@@ -249,7 +249,7 @@
     <string name="placeholder_livro">Livro</string>
     <string name="placeholder_contato">Contato</string>
     <string name="notification_devolucao_proxima">Devolução próxima</string>
-    <string name="notification_text_devolucao">O livro \'%1$s\' emprestado para %2$s está próximo da devolução.</string>
+    <string name="notification_text_devolucao">%1$s está com %2$s e a devolução está próxima</string>
     <string name="label_paginas_format">%1$d págs.</string>
     <string name="log_resposta_nula">Resposta nula</string>
     <string name="log_resposta_completa">Resposta completa: %1$s</string>

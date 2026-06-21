@@ -127,7 +127,7 @@ class ScannerIsbnActivity : AppCompatActivity() {
                             }
                         }
                         .addOnFailureListener { e ->
-                            Log.e(TAG, "@string/msg_falha_scanner ${e.message}", e)
+                            Log.e(TAG, getString(R.string.msg_falha_scanner, e.message ?: ""), e)
                         }
                         .addOnCompleteListener {
                             imageProxy.close()
@@ -144,7 +144,7 @@ class ScannerIsbnActivity : AppCompatActivity() {
                 cameraProvider.bindToLifecycle(this, cameraSelector, preview, analysis)
             } catch (e: Exception) {
                 Log.e(TAG, "Erro ao ligar câmera: ${e.message}", e)
-                Toast.makeText(this, "@string/msg_erro_iniciar_camera", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_erro_iniciar_camera), Toast.LENGTH_SHORT).show()
                 setResult(Activity.RESULT_CANCELED)
                 finish()
             }
