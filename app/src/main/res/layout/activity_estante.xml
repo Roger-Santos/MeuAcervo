@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-6771346576183891/1646669215"/> <!-- ID real -->
+        ads:adUnitId="@string/admob_banner_estante"/>
 
     <!-- Botão flutuante para adicionar -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton

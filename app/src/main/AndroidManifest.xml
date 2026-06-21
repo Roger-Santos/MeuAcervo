@@ -75,7 +75,7 @@
         </activity>
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-6771346576183891~5701464298"/>
+            android:value="@string/admob_app_id"/>
     </application>
 
 </manifest>
