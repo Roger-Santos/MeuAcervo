@@ -6,9 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.rogersantos.meuacervo.data.dao.EmprestimoDao
 import com.rogersantos.meuacervo.data.model.Emprestimo
+import com.rogersantos.meuacervo.data.model.Livro
 
 // Inclui a entidade Emprestimo e o DAO correspondente
-@Database(entities = [Emprestimo::class], version = 1)
+@Database(entities = [Emprestimo::class, Livro::class], version = 1)
 abstract class EmprestimoDatabase : RoomDatabase() {
 
     abstract fun emprestimoDao(): EmprestimoDao
