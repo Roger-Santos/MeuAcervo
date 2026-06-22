@@ -9,7 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rogersantos.meuacervo.R
-import com.rogersantos.meuacervo.data.database.LivroDatabase
+import com.rogersantos.meuacervo.data.database.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -40,7 +40,7 @@ class DetalhesLivroActivity : AppCompatActivity() {
         // Atualiza título dinamicamente com nome do livro
         if (livroId != -1) {
             MainScope().launch {
-                val dao = LivroDatabase.getInstance(applicationContext).livroDao()
+                val dao = AppDatabase.getInstance(applicationContext).livroDao()
                 val livro = withContext(Dispatchers.IO) { dao.buscarPorId(livroId) }
                 livro?.let { supportActionBar?.title = it.titulo }
             }
@@ -69,7 +69,7 @@ class DetalhesLivroActivity : AppCompatActivity() {
         // Atualiza título se o livro foi editado
         if (livroId != -1) {
             MainScope().launch {
-                val dao = LivroDatabase.getInstance(applicationContext).livroDao()
+                val dao = AppDatabase.getInstance(applicationContext).livroDao()
                 val livro = withContext(Dispatchers.IO) { dao.buscarPorId(livroId) }
                 livro?.let { supportActionBar?.title = it.titulo }
             }

@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rogersantos.meuacervo.R
 import com.rogersantos.meuacervo.data.dao.EmprestimoDao
 import com.rogersantos.meuacervo.data.dao.LivroDao
-import com.rogersantos.meuacervo.data.database.EmprestimoDatabase
-import com.rogersantos.meuacervo.data.database.LivroDatabase
+import com.rogersantos.meuacervo.data.database.AppDatabase
 import com.rogersantos.meuacervo.data.model.Emprestimo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,8 +30,8 @@ class HistoricoFragment : Fragment(R.layout.fragment_historico) {
         recycler = view.findViewById(R.id.recyclerHistorico)
         empty = view.findViewById(R.id.txtEmptyHistorico)
 
-        emprestimoDao = EmprestimoDatabase.getInstance(requireContext()).emprestimoDao()
-        livroDao = LivroDatabase.getInstance(requireContext()).livroDao()
+        emprestimoDao = AppDatabase.getInstance(requireContext()).emprestimoDao()
+        livroDao = AppDatabase.getInstance(requireContext()).livroDao()
 
         adapter = GrupoEmprestimoAdapter()
         recycler.layoutManager = LinearLayoutManager(requireContext())

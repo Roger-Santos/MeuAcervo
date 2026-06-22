@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
 import com.rogersantos.meuacervo.ui.detalhes.DetalhesLivroActivity
 import com.rogersantos.meuacervo.R
-import com.rogersantos.meuacervo.data.database.LivroDatabase
+import com.rogersantos.meuacervo.data.database.AppDatabase
 import com.rogersantos.meuacervo.data.model.Livro
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -70,7 +70,7 @@ class EstanteLivrosFragment : Fragment(R.layout.fragment_estante_lista) {
 
     private fun carregarLivros() {
         viewLifecycleOwner.lifecycleScope.launch {
-            val dao = LivroDatabase.getInstance(requireContext()).livroDao()
+            val dao = AppDatabase.getInstance(requireContext()).livroDao()
             val livros = withContext(Dispatchers.IO) { dao.listarTodos() }
             listaCompleta = livros
             filtrar(search.text?.toString().orEmpty())

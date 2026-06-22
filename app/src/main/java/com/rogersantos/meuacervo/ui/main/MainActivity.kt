@@ -7,11 +7,14 @@ import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
+import com.rogersantos.meuacervo.MeuAcervoApplication
 import com.rogersantos.meuacervo.ui.estante.EstanteActivity
 import com.rogersantos.meuacervo.ui.controle.MeuControleActivity
 import com.rogersantos.meuacervo.R
 import com.google.android.gms.ads.MobileAds
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +28,18 @@ class MainActivity : AppCompatActivity() {
         // Botões com navegação
         val btnAbrirEstante = findViewById<MaterialButton>(R.id.btnAbrirEstante)
         val btnMeuControle = findViewById<MaterialButton>(R.id.btnMeuControle)
+
+        // Desabilitados até confirmarmos que a migração do banco antigo
+        // (se houver) já terminou — evita abrir a estante "vazia" por engano
+        // numa eventual primeira execução após a atualização do app.
+        btnAbrirEstante.isEnabled = false
+        btnMeuControle.isEnabled = false
+
+        lifecycleScope.launch {
+            (application as MeuAcervoApplication).migracaoConcluida.await()
+            btnAbrirEstante.isEnabled = true
+            btnMeuControle.isEnabled = true
+        }
 
         btnAbrirEstante.setOnClickListener {
             startActivity(Intent(this, EstanteActivity::class.java))
