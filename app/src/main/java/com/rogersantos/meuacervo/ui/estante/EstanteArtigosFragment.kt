@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rogersantos.meuacervo.ui.detalhes.DetalhesArtigoActivity
 import com.rogersantos.meuacervo.R
-import com.rogersantos.meuacervo.data.database.ArtigoDatabase
+import com.rogersantos.meuacervo.data.database.AppDatabase
 import com.rogersantos.meuacervo.data.model.Artigo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -60,7 +60,7 @@ class EstanteArtigosFragment : Fragment(R.layout.fragment_estante_lista) {
 
     private fun carregarArtigos() {
         viewLifecycleOwner.lifecycleScope.launch {
-            val dao = ArtigoDatabase.getInstance(requireContext()).artigoDao()
+            val dao = AppDatabase.getInstance(requireContext()).artigoDao()
             val artigos = withContext(Dispatchers.IO) { dao.listarTodos() }
             listaCompleta = artigos
             filtrar(search.text?.toString().orEmpty())

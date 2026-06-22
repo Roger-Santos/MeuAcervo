@@ -19,8 +19,7 @@ import com.rogersantos.meuacervo.worker.LembreteWorker
 import com.rogersantos.meuacervo.R
 import com.rogersantos.meuacervo.data.dao.EmprestimoDao
 import com.rogersantos.meuacervo.data.dao.LivroDao
-import com.rogersantos.meuacervo.data.database.EmprestimoDatabase
-import com.rogersantos.meuacervo.data.database.LivroDatabase
+import com.rogersantos.meuacervo.data.database.AppDatabase
 import com.rogersantos.meuacervo.data.model.Emprestimo
 import com.rogersantos.meuacervo.data.model.Livro
 import kotlinx.coroutines.Dispatchers
@@ -48,8 +47,8 @@ class EmprestimosFragment : Fragment(R.layout.fragment_emprestimos) {
         empty = view.findViewById(R.id.txtEmpty)
         fabAdd = view.findViewById(R.id.fabAddEmprestimo)
 
-        dao = EmprestimoDatabase.getInstance(requireContext()).emprestimoDao()
-        livroDao = LivroDatabase.getInstance(requireContext()).livroDao()
+        dao = AppDatabase.getInstance(requireContext()).emprestimoDao()
+        livroDao = AppDatabase.getInstance(requireContext()).livroDao()
 
         adapter = EmprestimoAdapter { emprestimo ->
             devolverEmprestimo(emprestimo)

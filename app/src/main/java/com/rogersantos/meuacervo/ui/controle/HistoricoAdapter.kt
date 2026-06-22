@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.rogersantos.meuacervo.R
-import com.rogersantos.meuacervo.data.database.LivroDatabase
+import com.rogersantos.meuacervo.data.database.AppDatabase
 import com.rogersantos.meuacervo.data.model.Emprestimo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -53,7 +53,7 @@ class HistoricoAdapter :
 
             // Se quiser mostrar título/capa do livro vinculado
             if (tvLivro != null && ivCapa != null) {
-                val dao = LivroDatabase.getInstance(itemView.context).livroDao()
+                val dao = AppDatabase.getInstance(itemView.context).livroDao()
                 CoroutineScope(Dispatchers.IO).launch {
                     val livro = dao.buscarPorId(e.livroId)
                     withContext(Dispatchers.Main) {

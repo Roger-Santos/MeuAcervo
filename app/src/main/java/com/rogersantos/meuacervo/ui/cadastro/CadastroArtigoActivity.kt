@@ -10,8 +10,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.rogersantos.meuacervo.data.model.CrossRefIssnResponse
 import com.rogersantos.meuacervo.data.model.CrossRefResponse
 import com.rogersantos.meuacervo.R
-import com.rogersantos.meuacervo.data.database.ArtigoDatabase
-import com.rogersantos.meuacervo.data.database.PeriodicoDatabase
+import com.rogersantos.meuacervo.data.database.AppDatabase
 import com.rogersantos.meuacervo.data.model.Artigo
 import com.rogersantos.meuacervo.data.model.Periodico
 import com.rogersantos.meuacervo.data.network.ApiClient
@@ -120,7 +119,7 @@ class CadastroArtigoActivity : AppCompatActivity() {
 
     private fun carregarPeriodicos() {
         lifecycleScope.launch {
-            val dao = PeriodicoDatabase.getInstance(applicationContext).periodicoDao()
+            val dao = AppDatabase.getInstance(applicationContext).periodicoDao()
             periodicosSalvos = withContext(Dispatchers.IO) { dao.listarTodos() }
 
             val nomes = periodicosSalvos.map { it.nome }
@@ -131,7 +130,7 @@ class CadastroArtigoActivity : AppCompatActivity() {
 
     private fun carregarArtigo(id: Int) {
         lifecycleScope.launch {
-            val dao = ArtigoDatabase.getInstance(applicationContext).artigoDao()
+            val dao = AppDatabase.getInstance(applicationContext).artigoDao()
             val artigo = withContext(Dispatchers.IO) { dao.buscarPorId(id) }
             artigo?.let {
                 artigoExistente = it
@@ -200,7 +199,7 @@ class CadastroArtigoActivity : AppCompatActivity() {
                 issn = etIssn.text.toString().trim().ifEmpty { null }
             )
 
-            val dao = ArtigoDatabase.getInstance(applicationContext).artigoDao()
+            val dao = AppDatabase.getInstance(applicationContext).artigoDao()
             withContext(Dispatchers.IO) {
                 if (artigoExistente == null) dao.inserir(artigo) else dao.atualizar(artigo)
             }
@@ -212,7 +211,7 @@ class CadastroArtigoActivity : AppCompatActivity() {
 
     private suspend fun garantirPeriodicoSalvo(nome: String?, issn: String?) {
         if (nome.isNullOrBlank()) return
-        val dao = PeriodicoDatabase.getInstance(applicationContext).periodicoDao()
+        val dao = AppDatabase.getInstance(applicationContext).periodicoDao()
         val existente = withContext(Dispatchers.IO) { dao.buscarPorNome(nome) }
         if (existente == null) {
             withContext(Dispatchers.IO) { dao.inserir(Periodico(nome = nome, issn = issn)) }

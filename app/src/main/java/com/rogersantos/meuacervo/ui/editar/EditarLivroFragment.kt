@@ -18,7 +18,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.rogersantos.meuacervo.R
-import com.rogersantos.meuacervo.data.database.LivroDatabase
+import com.rogersantos.meuacervo.data.database.AppDatabase
 import com.rogersantos.meuacervo.data.model.Livro
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -157,7 +157,7 @@ class EditarLivroFragment : Fragment(R.layout.fragment_editar_livro) {
 
     private fun carregarLivro() {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            val dao = LivroDatabase.getInstance(requireContext()).livroDao()
+            val dao = AppDatabase.getInstance(requireContext()).livroDao()
             val resultado = dao.buscarPorId(livroId)
 
             withContext(Dispatchers.Main) {
@@ -219,7 +219,7 @@ class EditarLivroFragment : Fragment(R.layout.fragment_editar_livro) {
 
         atualizado?.let {
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                val dao = LivroDatabase.getInstance(requireContext()).livroDao()
+                val dao = AppDatabase.getInstance(requireContext()).livroDao()
                 dao.atualizar(it)
 
                 withContext(Dispatchers.Main) {

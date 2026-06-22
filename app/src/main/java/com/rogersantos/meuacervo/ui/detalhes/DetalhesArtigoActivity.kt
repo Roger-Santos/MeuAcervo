@@ -9,7 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rogersantos.meuacervo.R
-import com.rogersantos.meuacervo.data.database.ArtigoDatabase
+import com.rogersantos.meuacervo.data.database.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -38,7 +38,7 @@ class DetalhesArtigoActivity : AppCompatActivity() {
         // Atualiza título da Toolbar com o nome do artigo
         if (artigoId != -1) {
             MainScope().launch {
-                val dao = ArtigoDatabase.getInstance(applicationContext).artigoDao()
+                val dao = AppDatabase.getInstance(applicationContext).artigoDao()
                 val artigo = withContext(Dispatchers.IO) { dao.buscarPorId(artigoId) }
                 artigo?.let { supportActionBar?.title = it.titulo }
             }
@@ -74,7 +74,7 @@ class DetalhesArtigoActivity : AppCompatActivity() {
         // Atualiza título se o artigo foi editado
         if (artigoId != -1) {
             MainScope().launch {
-                val dao = ArtigoDatabase.getInstance(applicationContext).artigoDao()
+                val dao = AppDatabase.getInstance(applicationContext).artigoDao()
                 val artigo = withContext(Dispatchers.IO) { dao.buscarPorId(artigoId) }
                 artigo?.let { supportActionBar?.title = it.titulo }
             }

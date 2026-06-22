@@ -42,7 +42,7 @@ import com.rogersantos.meuacervo.data.model.VolumeInfo
 import com.rogersantos.meuacervo.data.model.VolumesResponse
 import com.rogersantos.meuacervo.util.buscarSequencialAny
 import com.rogersantos.meuacervo.data.dao.LivroDao
-import com.rogersantos.meuacervo.data.database.LivroDatabase
+import com.rogersantos.meuacervo.data.database.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -114,7 +114,7 @@ class CadastroLivroActivity : AppCompatActivity() {
     private var isCapaSelection: Boolean = false
 
     private val recognizer by lazy { TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS) }
-    private lateinit var database: LivroDatabase
+    private lateinit var database: AppDatabase
     private lateinit var livroDao: LivroDao
     private var campoFocado: EditText? = null
 
@@ -202,7 +202,7 @@ class CadastroLivroActivity : AppCompatActivity() {
         progressLoading = findViewById(R.id.progressLoading)
         layoutConteudo = findViewById(R.id.layoutConteudo)
 
-        database = LivroDatabase.getInstance(applicationContext)
+        database = AppDatabase.getInstance(applicationContext)
         livroDao = database.livroDao()
 
         // FAB

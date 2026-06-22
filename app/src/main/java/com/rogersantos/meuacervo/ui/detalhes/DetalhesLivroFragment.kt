@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.rogersantos.meuacervo.R
-import com.rogersantos.meuacervo.data.database.LivroDatabase
+import com.rogersantos.meuacervo.data.database.AppDatabase
 import com.rogersantos.meuacervo.data.model.Livro
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -67,7 +67,7 @@ class DetalhesLivroFragment : Fragment(R.layout.fragment_detalhes_livro) {
 
     private fun carregarLivro() {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            val dao = LivroDatabase.getInstance(requireContext()).livroDao()
+            val dao = AppDatabase.getInstance(requireContext()).livroDao()
             val resultado = dao.buscarPorId(livroId)
 
             withContext(Dispatchers.Main) {

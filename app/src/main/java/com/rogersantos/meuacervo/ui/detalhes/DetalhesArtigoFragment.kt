@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.rogersantos.meuacervo.R
-import com.rogersantos.meuacervo.data.database.ArtigoDatabase
+import com.rogersantos.meuacervo.data.database.AppDatabase
 import com.rogersantos.meuacervo.data.model.Artigo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -57,7 +57,7 @@ class DetalhesArtigoFragment : Fragment(R.layout.fragment_detalhes_artigo) {
 
     private fun carregarArtigo() {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            val dao = ArtigoDatabase.getInstance(requireContext()).artigoDao()
+            val dao = AppDatabase.getInstance(requireContext()).artigoDao()
             val resultado = dao.buscarPorId(artigoId)
 
             withContext(Dispatchers.Main) {

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.rogersantos.meuacervo.R
-import com.rogersantos.meuacervo.data.database.LivroDatabase
+import com.rogersantos.meuacervo.data.database.AppDatabase
 import com.rogersantos.meuacervo.data.model.Emprestimo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -80,7 +80,7 @@ class EmprestimoAdapter(
 
             // Buscar informações do livro
             val context = itemView.context
-            val dao = LivroDatabase.getInstance(context).livroDao()
+            val dao = AppDatabase.getInstance(context).livroDao()
             CoroutineScope(Dispatchers.IO).launch {
                 val livro = dao.buscarPorId(e.livroId)
                 withContext(Dispatchers.Main) {
