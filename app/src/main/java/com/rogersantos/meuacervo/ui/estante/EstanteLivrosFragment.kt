@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -32,7 +33,12 @@ class EstanteLivrosFragment : Fragment(R.layout.fragment_estante_lista) {
         empty = view.findViewById(R.id.txtEmpty)
         search = view.findViewById(R.id.etSearch)
 
-        recycler.layoutManager = GridLayoutManager(requireContext(), 1)
+        val gridLayout = GridLayoutManager(requireContext(), 2)
+        gridLayout.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int = 1
+        }
+        recycler.layoutManager = gridLayout
+        recycler.setHasFixedSize(true)
         adapter = LivroAdapter { livro ->
             val intent = Intent(requireContext(), DetalhesLivroActivity::class.java)
             intent.putExtra("livroId", livro.id)

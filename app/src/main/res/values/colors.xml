@@ -1,57 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
 
-    <color name="accentColor">#607D8B</color>
-    <color name="primaryText">#212121</color>
-    <color name="secondaryText">#757575</color>
-    <color name="wordsAreaBackground">#EFEFEF</color>
+    <!-- ===================== PALETA MINIMALISTA ===================== -->
 
-    <color name="darker_gray">#A9A9A9</color>
-
-
-
-
-
-    <!-- Primária: azul confiável e moderno -->
-    <color name="primaryColor">#1976D2</color>         <!-- Azul médio -->
-    <color name="darkPrimaryColor">#1565C0</color>     <!-- Azul escuro -->
-    <color name="lightPrimaryColor">#BBDEFB</color>    <!-- Azul claro -->
-
-    <!-- Secundária: verde suave para contraste -->
-    <color name="secondaryColor">#43A047</color>       <!-- Verde médio -->
-    <color name="darkSecondaryColor">#388E3C</color>   <!-- Verde escuro -->
-    <color name="lightSecondaryColor">#C8E6C9</color>  <!-- Verde claro -->
-
-    <!-- Fundo e divisores -->
-    <color name="backgroundColor">#F5F5F5</color>      <!-- Cinza claro -->
-    <color name="surfaceColor">#FFFFFF</color>         <!-- Branco puro -->
-    <color name="divideColor">#E0E0E0</color>          <!-- Cinza divisório -->
+    <!-- Fundo e superfícies -->
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="surfaceColor">#FFFFFF</color>
+    <color name="surfaceVariant">#F7F7F7</color>
+    <color name="divideColor">#EFEFEF</color>
 
     <!-- Texto -->
-    <color name="textPrimary">#212121</color>          <!-- Preto suave -->
-    <color name="textSecondary">#757575</color>        <!-- Cinza escuro -->
-    <color name="textDisabled">#BDBDBD</color>         <!-- Cinza claro -->
+    <color name="textPrimary">#111111</color>
+    <color name="textSecondary">#6B6B6B</color>
+    <color name="textDisabled">#BDBDBD</color>
 
-    <!-- Ícones e estados -->
-    <color name="iconColor">#616161</color>            <!-- Cinza médio -->
-    <color name="disabledIcon">#9E9E9E</color>         <!-- Ícone desabilitado -->
+    <!-- Cor de destaque única — usada em botões primários e pills ativos -->
+    <color name="primaryColor">#111111</color>
+    <color name="darkPrimaryColor">#000000</color>
+    <color name="lightPrimaryColor">#F0F0F0</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
 
-    <!-- Erros e alertas -->
-    <color name="errorColor">#D32F2F</color>           <!-- Vermelho alerta -->
-    <color name="warningColor">#FFA000</color>         <!-- Laranja alerta -->
-    <color name="successColor">#388E3C</color>         <!-- Verde sucesso -->
+    <!-- Secundária (não usada como destaque, só como suporte) -->
+    <color name="secondaryColor">#6B6B6B</color>
+    <color name="darkSecondaryColor">#444444</color>
+    <color name="lightSecondaryColor">#EFEFEF</color>
 
-    <!-- Ação flutuante -->
-    <color name="fabColor">#FF4081</color>             <!-- Rosa vibrante -->
+    <!-- Ícones -->
+    <color name="iconColor">#444444</color>
+    <color name="disabledIcon">#BDBDBD</color>
 
-    <color name="amber">#FFC107</color>
+    <!-- Estados -->
+    <color name="errorColor">#D32F2F</color>
+    <color name="warningColor">#F59E0B</color>
+    <color name="successColor">#16A34A</color>
+
+    <!-- FAB e ações flutuantes -->
+    <color name="fabColor">#111111</color>
+
+    <!-- Cores de capa placeholder (usadas nos cards sem imagem) -->
+    <color name="capaCoral">#F5C4B3</color>
+    <color name="capaTeal">#9FE1CB</color>
+    <color name="capaAmber">#FAC775</color>
+    <color name="capaPurple">#CECBF6</color>
+    <color name="capaBlue">#B3D4F5</color>
+    <color name="capaGreen">#B7EAC7</color>
+
+    <!-- Legados mantidos para compatibilidade com drawables existentes -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="accentColor">#111111</color>
+    <color name="primaryText">#111111</color>
+    <color name="secondaryText">#6B6B6B</color>
+    <color name="wordsAreaBackground">#F7F7F7</color>
+    <color name="darker_gray">#A9A9A9</color>
     <color name="darkGray">#616161</color>
+    <color name="amber">#F59E0B</color>
 
 </resources>

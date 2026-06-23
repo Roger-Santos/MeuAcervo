@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -57,10 +56,8 @@ class LivroAdapter(
             // Nota
             ratingBar.rating = livro.nota?.toFloat() ?: 0f
 
-            // Ícone de "lido"
-            val corLido = ContextCompat.getColor(context, R.color.primaryColor)
-            val corNaoLido = ContextCompat.getColor(context, R.color.disabledIcon)
-            imgLido.setColorFilter(if (livro.jaLido) corLido else corNaoLido)
+            // Ícone de "lido" — visível só quando o livro foi marcado como lido
+            imgLido.visibility = if (livro.jaLido) View.VISIBLE else View.GONE
 
             // Capa
             Glide.with(context).clear(imgCapa)

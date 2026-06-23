@@ -8,51 +8,64 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundColor">
 
-    <!-- AppBar com Toolbar e Tabs -->
+    <!-- AppBar flat (sem sombra) com toolbar branca e pills de navegação -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="4dp">
+        android:background="@color/backgroundColor"
+        app:elevation="0dp">
 
-        <!-- Toolbar moderna -->
+        <!-- Toolbar minimalista -->
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarEstante"
+            style="@style/Toolbar.Minimalista"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/primaryColor"
             app:title="@string/titulo_estante"
-            app:titleTextColor="@android:color/white"
             app:navigationIcon="@drawable/ic_arrow_back"/>
 
-        <!-- Tabs -->
+        <!-- Pills de navegação substituindo o TabLayout -->
+        <!-- Mantém o id tabLayout para não quebrar o TabLayoutMediator -->
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabIndicatorColor="@color/secondaryColor"
-            app:tabSelectedTextColor="@color/primaryColor"
+            android:layout_height="48dp"
+            android:background="@color/backgroundColor"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            app:tabIndicatorHeight="0dp"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabSelectedTextColor="@color/colorOnPrimary"
             app:tabTextColor="@color/textSecondary"
-            android:background="@color/surfaceColor"/>
+            app:tabTextAppearance="@android:style/TextAppearance.Small"
+            app:tabBackground="@drawable/bg_pill_tab"
+            app:tabMode="scrollable"
+            app:tabMinWidth="0dp"
+            app:tabPaddingStart="16dp"
+            app:tabPaddingEnd="16dp"/>
+
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- ViewPager para Livros e Artigos -->
+    <!-- ViewPager — margem inferior reserva espaço para o banner -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_marginBottom="50dp"/> <!-- margem para não ficar escondido pelo banner -->
+        android:layout_marginBottom="56dp"/>
 
-    <!-- Banner fixo no rodapé -->
+    <!-- Banner AdMob fixo no rodapé, acima do FAB -->
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="8dp"
         ads:adSize="BANNER"
         ads:adUnitId="@string/admob_banner_estante"/>
 
-    <!-- Botão flutuante para adicionar -->
+    <!-- FAB no canto inferior direito, acima do banner -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAdd"
         android:layout_width="wrap_content"
@@ -60,7 +73,8 @@
         android:src="@drawable/ic_add_book"
         android:contentDescription="@string/fab_add_item"
         app:backgroundTint="@color/primaryColor"
-        app:tint="@android:color/white"
+        app:tint="@color/colorOnPrimary"
         android:layout_margin="16dp"
         android:layout_gravity="bottom|end"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

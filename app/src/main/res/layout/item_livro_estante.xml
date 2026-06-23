@@ -1,108 +1,91 @@
-<com.google.android.material.card.MaterialCardView
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="4dp"
-    app:strokeColor="@color/divideColor"
-    app:strokeWidth="1dp"
+    android:orientation="vertical"
+    android:padding="6dp"
     android:foreground="?attr/selectableItemBackground">
 
-    <LinearLayout
+    <!-- Capa com altura fixa absoluta — garante uniformidade na grade -->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="12dp">
+        android:layout_height="180dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/divideColor"
+        app:strokeWidth="0.5dp">
 
-        <!-- Capa à esquerda -->
         <ImageView
             android:id="@+id/ivCapaItem"
-            android:layout_width="100dp"
-            android:layout_height="140dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
             android:src="@drawable/ic_capa_placeholder"
-            android:contentDescription="@string/capa_livro_desc"
-            android:layout_marginEnd="12dp"/>
+            android:contentDescription="@string/capa_livro_desc"/>
 
-        <!-- Informações à direita -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+        <!-- Selo de lido (canto inferior direito da capa) -->
+        <ImageView
+            android:id="@+id/ivLido"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="6dp"
+            android:src="@drawable/ic_check_circle"
+            android:contentDescription="@string/icon_lido_desc"
+            android:visibility="gone"
+            app:tint="@color/successColor"/>
 
-            <!-- Título -->
-            <TextView
-                android:id="@+id/tvTituloItem"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/placeholder_titulo_livro"
-                android:ellipsize="end"
-                android:maxLines="2"/>
+    </androidx.cardview.widget.CardView>
 
-            <!-- Autor + ícone de lido -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="4dp">
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTituloItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="@string/placeholder_titulo_livro"
+        android:textColor="@color/textPrimary"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.2"/>
 
-                <TextView
-                    android:id="@+id/tvAutorItem"
-                    style="@style/TextAppearance.MaterialComponents.Body2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/placeholder_autores_livro"
-                    android:ellipsize="end"
-                    android:singleLine="true"/>
+    <!-- Autor -->
+    <TextView
+        android:id="@+id/tvAutorItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="@string/placeholder_autores_livro"
+        android:textColor="@color/textSecondary"
+        android:textSize="11sp"
+        android:maxLines="1"
+        android:ellipsize="end"/>
 
-                <ImageView
-                    android:id="@+id/ivLido"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="8dp"
-                    android:src="@drawable/ic_check_circle"
-                    app:tint="@color/disabledIcon"
-                    android:contentDescription="@string/icon_lido_desc"/>
-            </LinearLayout>
+    <!-- Campos ocultos mantidos para compatibilidade com o Adapter -->
+    <TextView
+        android:id="@+id/tvCategoriaItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
 
-            <!-- Categoria -->
-            <TextView
-                android:id="@+id/tvCategoriaItem"
-                style="@style/TextAppearance.MaterialComponents.Body2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/placeholder_categoria_livro"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:layout_marginTop="2dp"/>
+    <TextView
+        android:id="@+id/tvPaginasItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
 
-            <!-- Páginas -->
-            <TextView
-                android:id="@+id/tvPaginasItem"
-                style="@style/TextAppearance.MaterialComponents.Caption"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/placeholder_paginas_livro"
-                android:textColor="@color/textSecondary"
-                android:layout_marginTop="2dp"/>
+    <RatingBar
+        android:id="@+id/ratingBarItem"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:isIndicator="true"
+        android:visibility="gone"/>
 
-            <!-- Nota -->
-            <RatingBar
-                android:id="@+id/ratingBarItem"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numStars="5"
-                android:stepSize="1.0"
-                android:isIndicator="true"
-                android:layout_marginTop="6dp"/>
-        </LinearLayout>
-    </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+</LinearLayout>

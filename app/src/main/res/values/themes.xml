@@ -1,17 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Tema principal do app -->
     <style name="Theme.MeuAcervo" parent="Theme.MaterialComponents.Light.NoActionBar">
 
         <!-- Cores principais -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryVariant">@color/darkPrimaryColor</item>
-        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
 
         <!-- Cores secundárias -->
         <item name="colorSecondary">@color/secondaryColor</item>
         <item name="colorSecondaryVariant">@color/darkSecondaryColor</item>
-        <item name="colorOnSecondary">@android:color/white</item>
+        <item name="colorOnSecondary">@color/colorOnPrimary</item>
 
         <!-- Fundo e superfícies -->
         <item name="android:colorBackground">@color/backgroundColor</item>
@@ -22,25 +21,47 @@
         <item name="android:textColorPrimary">@color/textPrimary</item>
         <item name="android:textColorSecondary">@color/textSecondary</item>
 
-        <!-- Botões e ícones -->
+        <!-- Estados e controles -->
         <item name="colorError">@color/errorColor</item>
-        <item name="colorOnError">@android:color/white</item>
+        <item name="colorOnError">@color/colorOnPrimary</item>
         <item name="colorControlNormal">@color/iconColor</item>
         <item name="colorControlActivated">@color/primaryColor</item>
 
-        <!-- FloatingActionButton -->
-        <item name="floatingActionButtonStyle">@style/Widget.MaterialComponents.FloatingActionButton</item>
-
-        <!-- Estilo de botão padrão -->
-        <item name="materialButtonStyle">@style/Widget.MaterialComponents.Button</item>
-
-        <!-- Estilo de CardView Material -->
-        <item name="materialCardViewStyle">@style/Widget.MaterialComponents.CardView</item>
-
-        <!-- Estilo de TextInputLayout -->
-        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
-
-        <!-- Fonte padrão -->
+        <!-- Fonte -->
         <item name="android:fontFamily">@font/roboto</item>
+
     </style>
+
+    <!-- Toolbar minimalista: fundo branco, texto e ícones escuros -->
+    <style name="Toolbar.Minimalista" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:background">@color/surfaceColor</item>
+        <item name="titleTextColor">@color/textPrimary</item>
+        <item name="navigationIconTint">@color/textPrimary</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <!-- Pill ativo: fundo preto, texto branco -->
+    <style name="PillAtivo" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="backgroundTint">@color/primaryColor</item>
+        <item name="cornerRadius">20dp</item>
+    </style>
+
+    <!-- Pill inativo: sem fundo, texto cinza -->
+    <style name="PillInativo" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/textSecondary</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="cornerRadius">20dp</item>
+    </style>
+
 </resources>
