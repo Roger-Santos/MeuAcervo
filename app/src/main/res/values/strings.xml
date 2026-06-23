@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Meu Acervo</string>
 
+    <string name="label_total_livros">Total de livros</string>
+    <string name="label_emprestados">Emprestados</string>
+    <string name="label_lidos_ano">Já lidos</string>
+    <string name="label_total_artigos">Total de artigos</string>
+
     <string name="admob_app_id" translatable="false">ca-app-pub-6771346576183891~5701464298</string>
     <string name="admob_banner_estante" translatable="false">ca-app-pub-6771346576183891/6371757213</string>
 

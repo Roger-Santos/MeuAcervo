@@ -1,73 +1,247 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rootMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/backgroundColor">
+    android:background="@color/backgroundColor"
+    android:fillViewport="false">
 
-    <!-- Área superior: logo + título (50% da tela) -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center"
-        android:paddingTop="48dp"
-        android:paddingBottom="16dp">
-
-        <ImageView
-            android:id="@+id/imgLogo"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@mipmap/ic_launcher"
-            android:contentDescription="@string/logo_app_desc"
-            android:layout_marginBottom="16dp"/>
-
-        <TextView
-            android:id="@+id/txtTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="@color/textPrimary"/>
-    </LinearLayout>
-
-    <!-- Área inferior: botões (50% da tela) -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="top"
         android:padding="24dp">
 
+        <!-- Cabeçalho: ícone + nome do app -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="48dp"
+            android:paddingBottom="32dp">
+
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@mipmap/ic_launcher"
+                android:contentDescription="@string/logo_app_desc"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:id="@+id/txtTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/textPrimary"/>
+
+            <TextView
+                android:id="@+id/txtSubtitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="—"
+                android:textSize="14sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginTop="4dp"/>
+
+        </LinearLayout>
+
+        <!-- Cards de estatísticas -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:useDefaultMargins="false"
+            android:layout_marginBottom="24dp">
+
+            <!-- Total de livros -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/divideColor"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/surfaceVariant">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_total_livros"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary"/>
+
+                    <TextView
+                        android:id="@+id/txtTotalLivros"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="—"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary"
+                        android:layout_marginTop="4dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Emprestados -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/divideColor"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/surfaceVariant">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_emprestados"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary"/>
+
+                    <TextView
+                        android:id="@+id/txtEmprestados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="—"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary"
+                        android:layout_marginTop="4dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Lidos este ano -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/divideColor"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/surfaceVariant">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_lidos_ano"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary"/>
+
+                    <TextView
+                        android:id="@+id/txtLidosAno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="—"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary"
+                        android:layout_marginTop="4dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Total de artigos -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/divideColor"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/surfaceVariant">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_total_artigos"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary"/>
+
+                    <TextView
+                        android:id="@+id/txtTotalArtigos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="—"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary"
+                        android:layout_marginTop="4dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
+
+        <!-- Botões de navegação -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAbrirEstante"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:text="@string/btn_estante"
-            android:textSize="16sp"
+            android:textSize="15sp"
+            android:textColor="@color/colorOnPrimary"
             app:cornerRadius="12dp"
             app:icon="@drawable/ic_book"
             app:iconPadding="8dp"
-            app:iconTint="@android:color/white"
+            app:iconTint="@color/colorOnPrimary"
             app:backgroundTint="@color/primaryColor"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="12dp"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnMeuControle"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:text="@string/btn_controle"
-            android:textSize="16sp"
+            android:textSize="15sp"
+            android:textColor="@color/textPrimary"
             app:cornerRadius="12dp"
             app:icon="@drawable/ic_calendar"
             app:iconPadding="8dp"
-            app:iconTint="@android:color/white"
-            app:backgroundTint="@color/primaryColor"
-            android:textColor="@android:color/white"/>
+            app:iconTint="@color/textPrimary"
+            app:backgroundTint="@color/surfaceVariant"
+            app:strokeColor="@color/divideColor"
+            app:strokeWidth="1dp"/>
+
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

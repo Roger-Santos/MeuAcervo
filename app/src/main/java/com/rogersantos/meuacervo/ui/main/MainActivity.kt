@@ -5,18 +5,31 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.button.MaterialButton
 import com.rogersantos.meuacervo.MeuAcervoApplication
-import com.rogersantos.meuacervo.ui.estante.EstanteActivity
-import com.rogersantos.meuacervo.ui.controle.MeuControleActivity
 import com.rogersantos.meuacervo.R
-import com.google.android.gms.ads.MobileAds
+import com.rogersantos.meuacervo.data.database.AppDatabase
+import com.rogersantos.meuacervo.ui.controle.MeuControleActivity
+import com.rogersantos.meuacervo.ui.estante.EstanteActivity
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var txtSubtitulo: TextView
+    private lateinit var txtTotalLivros: TextView
+    private lateinit var txtEmprestados: TextView
+    private lateinit var txtLidosAno: TextView
+    private lateinit var txtTotalArtigos: TextView
+    private lateinit var btnAbrirEstante: MaterialButton
+    private lateinit var btnMeuControle: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_MeuAcervo)
@@ -25,13 +38,15 @@ class MainActivity : AppCompatActivity() {
 
         MobileAds.initialize(this) {}
 
-        // Botões com navegação
-        val btnAbrirEstante = findViewById<MaterialButton>(R.id.btnAbrirEstante)
-        val btnMeuControle = findViewById<MaterialButton>(R.id.btnMeuControle)
+        txtSubtitulo = findViewById(R.id.txtSubtitulo)
+        txtTotalLivros = findViewById(R.id.txtTotalLivros)
+        txtEmprestados = findViewById(R.id.txtEmprestados)
+        txtLidosAno = findViewById(R.id.txtLidosAno)
+        txtTotalArtigos = findViewById(R.id.txtTotalArtigos)
+        btnAbrirEstante = findViewById(R.id.btnAbrirEstante)
+        btnMeuControle = findViewById(R.id.btnMeuControle)
 
-        // Desabilitados até confirmarmos que a migração do banco antigo
-        // (se houver) já terminou — evita abrir a estante "vazia" por engano
-        // numa eventual primeira execução após a atualização do app.
+        // Botões desabilitados até a migração do banco confirmar
         btnAbrirEstante.isEnabled = false
         btnMeuControle.isEnabled = false
 
@@ -39,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             (application as MeuAcervoApplication).migracaoConcluida.await()
             btnAbrirEstante.isEnabled = true
             btnMeuControle.isEnabled = true
+            carregarEstatisticas()
         }
 
         btnAbrirEstante.setOnClickListener {
@@ -49,9 +65,40 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, MeuControleActivity::class.java))
         }
 
-        // Permissões e notificações
         criarCanalNotificacao()
         solicitarPermissaoNotificacao()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Atualiza os contadores ao voltar para a tela principal
+        lifecycleScope.launch { carregarEstatisticas() }
+    }
+
+    private suspend fun carregarEstatisticas() {
+        val db = AppDatabase.getInstance(applicationContext)
+        val anoAtual = Calendar.getInstance().get(Calendar.YEAR).toString()
+
+        val totalLivros: Int
+        val emprestados: Int
+        val lidosAno: Int
+        val totalArtigos: Int
+
+        withContext(Dispatchers.IO) {
+            totalLivros = db.livroDao().listarTodos().size
+            emprestados = db.emprestimoDao().listarTodos()
+                .count { !it.devolvido }
+            lidosAno = db.livroDao().listarTodos()
+                .count { it.jaLido }
+            totalArtigos = db.artigoDao().listarTodos().size
+        }
+
+        val subtitulo = "$totalLivros livros · $totalArtigos artigos"
+        txtSubtitulo.text = subtitulo
+        txtTotalLivros.text = totalLivros.toString()
+        txtEmprestados.text = emprestados.toString()
+        txtLidosAno.text = lidosAno.toString()
+        txtTotalArtigos.text = totalArtigos.toString()
     }
 
     private fun criarCanalNotificacao() {
@@ -63,7 +110,6 @@ class MainActivity : AppCompatActivity() {
             ).apply {
                 description = getString(R.string.channel_lembrete_descricao)
             }
-
             val manager = getSystemService(android.app.NotificationManager::class.java)
             manager.createNotificationChannel(channel)
         }
@@ -73,12 +119,8 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             val granted = checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) ==
                     PackageManager.PERMISSION_GRANTED
-
             if (!granted) {
-                requestPermissions(
-                    arrayOf(Manifest.permission.POST_NOTIFICATIONS),
-                    100
-                )
+                requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 100)
             }
         }
     }

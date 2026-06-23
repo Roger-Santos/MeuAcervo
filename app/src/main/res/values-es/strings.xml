@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Meu Acervo</string>
 
+    <string name="label_total_livros">Total de libros</string>
+    <string name="label_emprestados">Prestados</string>
+    <string name="label_lidos_ano">Ya leídos</string>
+    <string name="label_total_artigos">Total de artículos</string>
+
     <string name="title_activity_cadastro_livro">Registrar Libro</string>
     <string name="title_activity_cadastro_artigo">Registrar Artículo</string>
     <string name="title_activity_meu_controle">Mi Control</string>
