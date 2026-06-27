@@ -6,6 +6,9 @@
     <string name="label_lidos_ano">Already read</string>
     <string name="label_total_artigos">Total articles</string>
 
+    <!-- EN (values-en) -->
+    <string name="btn_registrar_emprestimo">Register loan</string>
+
     <string name="title_activity_cadastro_livro">Register Book</string>
     <string name="title_activity_cadastro_artigo">Register Article</string>
     <string name="title_activity_meu_controle">My Control</string>

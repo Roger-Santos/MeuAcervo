@@ -80,18 +80,19 @@ class DetalhesLivroFragment : Fragment(R.layout.fragment_detalhes_livro) {
     }
 
     private fun preencherCampos(livro: Livro) {
-        // Título (placeholder)
+        // Título
         setValueOrPlaceholder(tvTitulo, livro.titulo)
 
-        // Rótulos fixos + valor
-        setLabeled(tvCategoria, "", livro.categoria)
-        setLabeled(tvAutores, "", livro.autores)
-        setLabeled(tvEditora, "", livro.editora)
-        setLabeled(tvDataPublicacao, "", livro.dataPublicacao)
-        setLabeled(tvPaginas, "",
+        // Campos de texto — label fixo no XML, só o valor muda
+        setValueOrPlaceholder(tvAutores, livro.autores)
+        setValueOrPlaceholder(tvCategoria, livro.categoria)
+        setValueOrPlaceholder(tvEditora, livro.editora)
+        setValueOrPlaceholder(tvDataPublicacao, livro.dataPublicacao)
+        setValueOrPlaceholder(tvPaginas,
             livro.paginas?.takeIf { it > 0 }?.toString()
         )
-        setLabeled(tvDescricao, "", livro.descricao)
+        setValueOrPlaceholder(tvDescricao, livro.descricao)
+
 
         // Nota (somente exibição)
         ratingBar.rating = livro.nota?.toFloat() ?: 0f
@@ -131,10 +132,8 @@ class DetalhesLivroFragment : Fragment(R.layout.fragment_detalhes_livro) {
             })
         }
 
-        // Ícone de lido
-        val corLido = ContextCompat.getColor(requireContext(), R.color.primaryColor)
-        val corNaoLido = ContextCompat.getColor(requireContext(), R.color.disabledIcon)
-        ivLido.setColorFilter(if (livro.jaLido) corLido else corNaoLido)
+        // Ícone de lido — visível só quando marcado como lido
+        ivLido.visibility = if (livro.jaLido) View.VISIBLE else View.GONE
 
         // Capa (local ou URL)
         val url = livro.capaPath ?: livro.urlCapa
@@ -153,15 +152,6 @@ class DetalhesLivroFragment : Fragment(R.layout.fragment_detalhes_livro) {
     private fun setValueOrPlaceholder(tv: TextView, value: String?) {
         val hasValue = !value.isNullOrBlank()
         tv.text = value?.trim()?.takeIf { it.isNotEmpty() } ?:  getString(R.string.placeholder_nao_informado)
-        tv.setTextColor(
-            ContextCompat.getColor(requireContext(), if (hasValue) R.color.textPrimary else R.color.textSecondary)
-        )
-    }
-
-    private fun setLabeled(tv: TextView, label: String, value: String?) {
-        val hasValue = !value.isNullOrBlank()
-        val valText = value?.trim()?.takeIf { it.isNotEmpty() } ?:  getString(R.string.placeholder_nao_informado)
-        tv.text = label + valText
         tv.setTextColor(
             ContextCompat.getColor(requireContext(), if (hasValue) R.color.textPrimary else R.color.textSecondary)
         )

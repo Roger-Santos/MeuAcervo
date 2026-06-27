@@ -6,6 +6,9 @@
     <string name="label_lidos_ano">Já lidos</string>
     <string name="label_total_artigos">Total de artigos</string>
 
+    <!-- PT -->
+    <string name="btn_registrar_emprestimo">Registrar empréstimo</string>
+
     <string name="admob_app_id" translatable="false">ca-app-pub-6771346576183891~5701464298</string>
     <string name="admob_banner_estante" translatable="false">ca-app-pub-6771346576183891/6371757213</string>
 

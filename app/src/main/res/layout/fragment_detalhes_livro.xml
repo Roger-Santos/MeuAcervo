@@ -1,328 +1,344 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scrollDetalhes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="12dp"
     android:background="@color/backgroundColor">
 
-    <LinearLayout
+    <!-- Conteúdo com scroll -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="72dp"
+        android:padding="20dp">
 
-        <!-- Capa e título -->
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="6dp"
-            app:strokeColor="@color/divideColor"
-            app:strokeWidth="1dp"
-            android:layout_marginBottom="16dp">
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:gravity="center_horizontal">
+            <!-- Capa centralizada grande -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="140dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp">
 
                 <ImageView
                     android:id="@+id/ivCapa"
-                    android:layout_width="180dp"
-                    android:layout_height="260dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:adjustViewBounds="true"
                     android:src="@drawable/ic_capa_placeholder"
-                    android:contentDescription="@string/capa_livro_desc"
-                    android:layout_marginBottom="12dp" />
+                    android:contentDescription="@string/capa_livro_desc"/>
 
-                <TextView
-                    android:id="@+id/tvTitulo"
-                    style="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_titulo_livro"
-                    android:textColor="@color/textPrimary"
-                    android:textAlignment="center"
-                    android:ellipsize="end"
-                    android:maxLines="2" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
-        <!-- Metadados -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp"
-            app:strokeColor="@color/divideColor"
-            app:strokeWidth="1dp"
-            android:layout_marginBottom="16dp">
+            <!-- Título -->
+            <TextView
+                android:id="@+id/tvTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_titulo_livro"
+                android:textColor="@color/textPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:layout_marginBottom="4dp"/>
 
+            <!-- Autores -->
+            <!-- Autores -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_autores_livro"
+                android:textSize="11sp"
+                android:textColor="@color/textSecondary"
+                android:textAlignment="center"
+                android:layout_marginBottom="2dp"/>
+
+            <TextView
+                android:id="@+id/tvAutores"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/valor_nao_informado"
+                android:textColor="@color/textSecondary"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Stat cards: Páginas e Categoria -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
 
-                <!-- Categoria -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="6dp">
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/surfaceVariant">
 
-                    <TextView
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_categoria_livro"
-                        android:textColor="@color/textPrimary" />
+                        android:orientation="vertical"
+                        android:padding="12dp">
 
-                    <TextView
-                        android:id="@+id/tvCategoria"
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/valor_nao_informado"
-                        android:textColor="@color/textSecondary"
-                        android:layout_marginStart="6dp" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_paginas"
+                            android:textSize="11sp"
+                            android:textColor="@color/textSecondary"/>
 
-                <!-- Autores -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/tvPaginas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/textPrimary"
+                            android:layout_marginTop="2dp"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="6dp">
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/surfaceVariant">
 
-                    <TextView
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_autores_livro"
-                        android:textColor="@color/textPrimary" />
+                        android:orientation="vertical"
+                        android:padding="12dp">
 
-                    <TextView
-                        android:id="@+id/tvAutores"
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/valor_nao_informado"
-                        android:textColor="@color/textSecondary"
-                        android:layout_marginStart="6dp" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_categoria"
+                            android:textSize="11sp"
+                            android:textColor="@color/textSecondary"/>
 
-                <!-- Editora -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="6dp">
+                        <TextView
+                            android:id="@+id/tvCategoria"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/textPrimary"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:layout_marginTop="2dp"/>
 
-                    <TextView
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_editora_livro"
-                        android:textColor="@color/textPrimary" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/tvEditora"
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/valor_nao_informado"
-                        android:textColor="@color/textSecondary"
-                        android:layout_marginStart="6dp" />
-                </LinearLayout>
-
-                <!-- Publicado em -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="6dp">
-
-                    <TextView
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_publicado_em"
-                        android:textColor="@color/textPrimary" />
-
-                    <TextView
-                        android:id="@+id/tvDataPublicacao"
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/valor_nao_informado"
-                        android:textColor="@color/textSecondary"
-                        android:layout_marginStart="6dp" />
-                </LinearLayout>
-
-                <!-- Páginas -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_paginas_livro"
-                        android:textColor="@color/textPrimary" />
-
-                    <TextView
-                        android:id="@+id/tvPaginas"
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/valor_nao_informado"
-                        android:textColor="@color/textSecondary"
-                        android:layout_marginStart="6dp" />
-                </LinearLayout>
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
 
-        <!-- Descrição + palavras-chave -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp"
-            android:layout_marginBottom="16dp"
-            app:strokeColor="@color/divideColor"
-            app:strokeWidth="1dp">
-
+            <!-- Stat cards: Editora e Ano -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="12dp">
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/surfaceVariant">
 
-                    <TextView
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_descricao_livro"
-                        android:textColor="@color/textPrimary" />
+                        android:orientation="vertical"
+                        android:padding="12dp">
 
-                    <TextView
-                        android:id="@+id/tvDescricao"
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="0dp"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_editora"
+                            android:textSize="11sp"
+                            android:textColor="@color/textSecondary"/>
+
+                        <TextView
+                            android:id="@+id/tvEditora"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/textPrimary"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:layout_marginTop="2dp"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@color/surfaceVariant">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/valor_nao_informado"
-                        android:textColor="@color/textSecondary"
-                        android:layout_marginStart="6dp" />
-                </LinearLayout>
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_ano"
+                            android:textSize="11sp"
+                            android:textColor="@color/textSecondary"/>
+
+                        <TextView
+                            android:id="@+id/tvDataPublicacao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/textPrimary"
+                            android:layout_marginTop="2dp"/>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <!-- Avaliação -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
 
                 <TextView
-                    style="@style/TextAppearance.MaterialComponents.Body2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_palavras_chave_livro"
-                    android:textColor="@color/textPrimary"
-                    android:layout_marginBottom="8dp" />
+                    android:text="@string/label_avaliacao_livro"
+                    android:textSize="13sp"
+                    android:textColor="@color/textSecondary"/>
 
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chipGroupPalavrasChave"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:singleLine="false"
-                    app:chipSpacing="8dp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Avaliação e status -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp"
-            app:strokeColor="@color/divideColor"
-            app:strokeWidth="1dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="8dp">
-
-                    <TextView
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_avaliacao_livro"
-                        android:textColor="@color/textPrimary" />
-
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        style="?android:attr/ratingBarStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:numStars="5"
-                        android:stepSize="1.0"
-                        android:isIndicator="true"
-                        android:progressTint="@color/primaryColor"
-                        android:layout_marginStart="8dp" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/tvDataAquisicao"
-                    style="@style/TextAppearance.MaterialComponents.Body2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/label_data_aquisicao_nao_informado"
-                    android:textColor="@color/textSecondary"
-                    android:layout_marginBottom="12dp" />
-
-                <LinearLayout
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:numStars="5"
+                    android:stepSize="1.0"
+                    android:isIndicator="true"
+                    android:layout_marginStart="8dp"/>
 
-                    <TextView
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_ja_foi_lido"
-                        android:textColor="@color/textPrimary" />
+                <ImageView
+                    android:id="@+id/ivLido"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="12dp"
+                    android:src="@drawable/ic_check_circle"
+                    app:tint="@color/successColor"
+                    android:contentDescription="@string/icon_lido_desc"
+                    android:visibility="gone"/>
 
-                    <ImageView
-                        android:id="@+id/ivLido"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginStart="8dp"
-                        android:src="@drawable/ic_check_circle"
-                        app:tint="@color/disabledIcon" />
-                </LinearLayout>
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+
+            <!-- Descrição -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_descricao_livro"
+                android:textSize="12sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/tvDescricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/valor_nao_informado"
+                android:textColor="@color/textPrimary"
+                android:textSize="14sp"
+                android:lineSpacingMultiplier="1.5"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Palavras-chave -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_palavras_chave_livro"
+                android:textSize="12sp"
+                android:textColor="@color/textSecondary"
+                android:layout_marginBottom="6dp"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupPalavrasChave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:singleLine="false"
+                app:chipSpacing="8dp"/>
+
+            <!-- Data aquisição -->
+            <TextView
+                android:id="@+id/tvDataAquisicao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_data_aquisicao_nao_informado"
+                android:textColor="@color/textSecondary"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Botão fixo no rodapé -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:background="@color/backgroundColor"
+        android:elevation="4dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEmprestar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/btn_registrar_emprestimo"
+            android:textColor="@color/colorOnPrimary"
+            app:backgroundTint="@color/primaryColor"
+            app:cornerRadius="10dp"/>
+
     </LinearLayout>
-</ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

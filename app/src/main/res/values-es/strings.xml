@@ -6,6 +6,9 @@
     <string name="label_lidos_ano">Ya leídos</string>
     <string name="label_total_artigos">Total de artículos</string>
 
+    <!-- ES (values-es) -->
+    <string name="btn_registrar_emprestimo">Registrar préstamo</string>
+
     <string name="title_activity_cadastro_livro">Registrar Libro</string>
     <string name="title_activity_cadastro_artigo">Registrar Artículo</string>
     <string name="title_activity_meu_controle">Mi Control</string>
