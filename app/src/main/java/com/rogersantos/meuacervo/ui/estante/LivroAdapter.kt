@@ -63,7 +63,7 @@ class LivroAdapter(
             Glide.with(context).clear(imgCapa)
 
             val requestOptions = RequestOptions()
-                .centerCrop()
+                .optionalFitCenter()
                 .placeholder(R.drawable.ic_capa_placeholder)
                 .error(R.drawable.ic_capa_placeholder)
 
